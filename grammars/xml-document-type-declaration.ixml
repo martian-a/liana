@@ -1,0 +1,48 @@
+{ 
+Title: XML Document Type Declaration 
+Description: An iXML Grammar for an XML Document Type Declaration, based on https://www.w3.org/TR/xml/
+
+Author: Sheila Ellen Thomson
+Created:  2024-09-26
+
+Note: (2024-06-26) Only works for external DTD definitions.
+} 
+
+       document-type-declaration : document-type-declaration-start, space-character, root-element, external-definition?, space-character?, document-type-declaration-end, whitespace-character*.
+
+-document-type-declaration-start : -"<", -"!", -"D", -"O", -"C", -"T", -"Y", -"P", -"E".
+  -document-type-declaration-end : -">".
+                    root-element : xml-name.
+             external-definition : space-character, (external-identifier-system | external-identifier-public ). 
+
+     -external-identifier-system : -"S", -"Y", -"S", -"T", -"E", -"M", space-character, system-identifier.
+     -external-identifier-public : -"P", -"U", -"B", -"L", -"I", -"C", space-character, public-identifier, space-character, system-identifier.
+
+               system-identifier : ( -'"', ~['"']*, -'"') | ( -"'", ~["'"]*, -"'").
+               public-identifier : ( -'"', public-id-character*, -'"' ) | ( -"'", public-id-character-except-single-quotemark*, -"'").
+
+-public-id-character-except-single-quotemark : ( #20 | #D | #A | lowercase-character | uppercase-character | digit | "-" | "(" | ")" | "+" | "," | "." | "/" | ":" | "=" | "?" | ";" | "!" | "*" | "#" | "@" | "$" | "_" | "%" ).
+                        -public-id-character : ( public-id-character-except-single-quotemark | "'" ).
+
+
+{ Common Syntactic Constructs in XML }
+
+    -whitespace-character: ( space-character | #9 | #D | #A ).
+
+
+{ Full definition temporarily commented out because of error with #EFFFF 
+-xml-name-start-character: ( ":" | uppercase-character | "_" | lowercase-character | [#C0-#D6] | [#D8-#F6] | [#F8-#2FF] | [#370-#37D] | [#37F-#1FFF] | [#200C-#200D] | [#2070-#218F] | [#2C00-#2FEF] | [#3001-#D7FF] | [#F900-#FDCF] | [#FDF0-#FFFD] | [#10000-#EFFFF] ). 
+}
+-xml-name-start-character: ( ":" | uppercase-character | "_" | lowercase-character | [#C0-#D6] | [#D8-#F6] | [#F8-#2FF] | [#370-#37D] | [#37F-#1FFF] | [#200C-#200D] | [#2070-#218F] | [#2C00-#2FEF] | [#3001-#D7FF] | [#F900-#FDCF] | [#FDF0-#FFFD] ).
+      -xml-name-character: ( xml-name-start-character | "-" | "." | digit | #B7 | [#0300-#036F] | [#203F-#2040] ).
+                -xml-name: xml-name-start-character, (xml-name-character)*.
+               -xml-names: xml-name, (#20, xml-name)*.
+      	-xml-name-token: xml-name-character+.
+         -xml-name-tokens: xml-name-token, (#20, xml-name-token)*.
+
+{ Other Convenience Defnitions }
+     
+              -digit : ["0"-"9"].
+-lowercase-character : ["a"-"z"].
+-uppercase-character : ["A"-"Z"].
+    -space-character : #20.
