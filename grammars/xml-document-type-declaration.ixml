@@ -5,7 +5,7 @@ Description: An iXML Grammar for an XML Document Type Declaration, based on http
 Author: Sheila Ellen Thomson
 Created:  2024-09-26
 
-Note: (2024-06-26) Only works for external DTD definitions.
+Note: (2024-09-26) Only works for external DTD definitions.
 } 
 
        document-type-declaration : document-type-declaration-start, space-character, root-element, external-definition?, space-character?, document-type-declaration-end, whitespace-character*.
@@ -40,7 +40,7 @@ Note: (2024-06-26) Only works for external DTD definitions.
       	-xml-name-token: xml-name-character+.
          -xml-name-tokens: xml-name-token, (#20, xml-name-token)*.
 
-{ Other Convenience Defnitions }
+{ Other Convenience Definitions }
      
               -digit : ["0"-"9"].
 -lowercase-character : ["a"-"z"].
