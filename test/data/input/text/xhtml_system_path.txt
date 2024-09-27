@@ -1,0 +1,1 @@
+<!DOCTYPE html SYSTEM "../../schemas/xhtml/xhtml-1_strict.dtd">

@@ -1,0 +1,1 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "../../schemas/xhtml/xhtml-1_strict.dtd">

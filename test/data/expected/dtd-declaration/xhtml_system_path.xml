@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document-type-declaration>
+	<root-element>html</root-element>
+	<external-definition>
+		<system-identifier>../../schemas/xhtml/xhtml-1_strict.dtd</system-identifier>
+	</external-definition>
+</document-type-declaration>

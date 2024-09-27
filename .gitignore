@@ -1,3 +1,14 @@
 # IDE artifacts
 *.project
 *.xpr
+
+# Miscellaneous ephemeral artifacts
+debug/
+logs/
+tmp/
+
+# Local settings
+local.*.xml
+
+# Documentation
+!local.*.example.xml

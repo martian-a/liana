@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<antlib
+    xmlns:if="ant:if"
+    xmlns:unless="ant:unless"
+    xmlns:li="http://xylarium.org/ns/liana/ant/macros">	
+	
+	
+	<macrodef
+		name="xproc"
+		description=""> 
+		
+		<attribute name="source" />
+		<attribute name="pipeline" />
+		<attribute name="xproc-processor" default="${xproc.processor.morgana}" />
+		<attribute name="xproc-processor-config" default="${xproc.processor.morgana.config.default}" />
+		<attribute name="catalogs" default="${resource-resolution.catalog.default}" />
+		<attribute name="tmp-dir" default="${base.tmp}" />
+		<attribute name="debug-dir" default="${base.debug}" />
+		<attribute name="debug" default="${debug}" />
+		
+		<sequential>
+			
+			<local name="local.source" />
+			<local name="local.uri.source" />
+			<local name="local.uri.tmp-dir" />
+			<local name="local.uri.debug-dir" />
+			
+			<makeurl property="local.uri.source" file="@{source}" validate="false" />
+			<makeurl property="local.uri.tmp-dir" file="@{tmp-dir}" validate="false" />
+			<makeurl property="local.uri.debug-dir" file="@{debug-dir}" validate="false" />	
+			
+			<java classname="com.xml_project.morganaxproc3.XProcEngine">
+				<classpath>
+					<pathelement location="@{xproc-processor}" />
+					<pathelement location="${ixml.processor.nine-ml.coffeegrinder}" />
+					<pathelement location="${ixml.processor.nine-ml.coffeefilter}" />
+					<pathelement location="${resource-resolution.resolver.xml-commons}" />
+					<pathelement location="${xslt.processor.saxon}" />
+					<pathelement location="${java.class.path}" />
+				</classpath>
+
+
+				<!-- Config -->
+				<arg line="-config=@{xproc-processor-config}" />	
+
+				<!-- Pipeline -->				
+				<arg value="@{pipeline}" />	
+				
+				<!-- Catalog -->
+				<arg line="-catalogs=@{catalogs}" />				
+				
+				<!-- Input -->
+				<arg value="-input:source=@{source}" />
+				
+				<!-- Outputs -->
+				<!-- arg value="-output:result=@{result}" /-->
+				
+				<!-- Options -->
+				<arg value="-option:tmp-dir=${local.uri.tmp-dir}" />		
+				<arg value="-option:debug-dir=${local.uri.debug-dir}" />		
+				<arg value="-option:debug=@{debug}" />
+				
+				<!-- Create output directories -->
+				<arg line="-cp" />	
+				
+			</java>
+			
+			
+		</sequential>		
+	</macrodef>		
+    
+</antlib>

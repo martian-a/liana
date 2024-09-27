@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+	
+	<debug value="false" />
+   
+	
+	<!-- Project root -->
+	<project>
+		<liana location="/path/to/liana" />
+	</project>
+
+	
+	<!-- Invisible XML settings -->
+	<ixml>
+		<processor>			
+			<nine-ml location="/path/to/nine-ml">
+				<coffeefilter location="/path/to/CoffeeFilter-3.2.6.jar" />
+				<coffeegrinder location="/path/to/CoffeeGrinder-3.2.6.jar" />
+				<coffeepot location="/path/to/coffeepot-3.2.6.jar" />				
+				<coffeesacks location="/path/to/CoffeeSacks-3.2.6.jar" />
+			</nine-ml>
+		</processor>	
+	</ixml>
+	
+	
+	<!-- XProc settings -->
+	<xproc>
+		<processor>
+			<morgana location="/path/to/MorganaXProc-IIIse.jar" />
+		</processor>
+	</xproc>
+	
+	
+	<!-- XSLT settings -->
+	<xslt>
+		<processor>
+			<saxon location="/path/to/saxon-*.jar" />
+		</processor>
+	</xslt>	
+	
+	
+	<!-- Apache ANT -->
+	<ant>
+		<lib>
+			<contrib location="/path/to/ant-contrib-1.0b3.jar" /> 
+		</lib>		
+	</ant>
+	
+	
+	<!-- XML Entity and URI resolution -->
+	<resource-resolution>
+		<resolver>
+			<xml-commons location="/path/to/xml-commons-resolver-1.2/resolver.jar" />
+		</resolver>	
+	</resource-resolution>
+
+	
+</properties>
