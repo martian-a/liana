@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+	
+	<group id="grammmars">
+		
+		<uri name="http://xylarium.org/ns/ixml/grammar/xml-document-type-declaration.ixml"
+			uri="xml_document_type_declaration.ixml" />
+		
+	</group>
+	
+</catalog>

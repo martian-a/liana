@@ -3,7 +3,7 @@
 	
 	<!-- #########################
          
-         iXML Test Runner - Runtime Arguments
+         iXSpec Test Runner - Runtime Arguments
          
          If you want to override a property set in 
          local.properties.xml or project.properties.xml
@@ -21,6 +21,6 @@
          
          ########################## -->
 	
-	<input location="${project.liana}/test/ixml/dtd_declaration.ixspec" />
+	<input location="${liana.root-dir}/test/ixml/dtd_declaration.ixspec" />
 	
 </args>

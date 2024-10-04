@@ -4,11 +4,13 @@
 	<debug value="false" />
    
 	
-	<!-- Project root -->
-	<project>
-		<liana location="/path/to/liana" />
-	</project>
-
+	<!-- Apache ANT -->
+	<ant>
+		<lib>
+			<contrib location="/path/to/ant-contrib-1.0b3.jar" /> 
+		</lib>		
+	</ant>
+	
 	
 	<!-- Invisible XML settings -->
 	<ixml>
@@ -21,6 +23,14 @@
 			</nine-ml>
 		</processor>	
 	</ixml>
+	
+	
+	<!-- XML Entity and URI resolution -->
+	<resource-resolution>
+		<resolver>
+			<xml-commons location="/path/to/xml-commons-resolver-1.2/resolver.jar" />
+		</resolver>	
+	</resource-resolution>
 	
 	
 	<!-- XProc settings -->
@@ -39,20 +49,10 @@
 	</xslt>	
 	
 	
-	<!-- Apache ANT -->
-	<ant>
-		<lib>
-			<contrib location="/path/to/ant-contrib-1.0b3.jar" /> 
-		</lib>		
-	</ant>
+	<!-- XSpec settings -->
+	<xspec>
+		<home location="/path/to/official-xspec" />
+	</xspec>
 	
-	
-	<!-- XML Entity and URI resolution -->
-	<resource-resolution>
-		<resolver>
-			<xml-commons location="/path/to/xml-commons-resolver-1.2/resolver.jar" />
-		</resolver>	
-	</resource-resolution>
-
 	
 </properties>

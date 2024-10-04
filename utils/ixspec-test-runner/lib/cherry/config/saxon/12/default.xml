@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="config.xsd" schematypens="http://www.w3.org/2001/XMLSchema" type="application/xml" ?>
+<configuration xmlns="http://saxon.sf.net/ns/configuration"
+	edition="HE"
+	label="Cherry default">
+
+	<!-- 
+		Documentation:
+		https://www.saxonica.com/documentation12/index.html#!configuration/configuration-file 
+	-->
+		
+</configuration>

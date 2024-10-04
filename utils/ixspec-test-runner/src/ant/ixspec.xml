@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<antlib
+    xmlns:if="ant:if"
+    xmlns:unless="ant:unless"
+    xmlns:xspec="http://xylarium.org/ns/cherry/ant/macros/xspec"
+    xmlns:ixspec="http://xylarium.org/ns/liana/ant/macros/ixspec">	
+		
+	
+	<macrodef name="run"
+		description="Run an iXSpec test file."
+		uri="http://xylarium.org/ns/liana/ant/macros/ixspec">
+		
+		<attribute name="source" />
+		<attribute name="output-dir" />
+		<attribute name="catalogs" default="${resource-resolution.catalog.default}" />    	
+		<attribute name="fail-on-error" default="false" />
+		<attribute name="tmp-dir" default="${base.tmp}" />
+		<attribute name="debug-dir" default="${base.debug}" />
+		<attribute name="debug" default="${debug}" />
+		
+		<sequential>
+			
+			<local name="local.ixspec-file.name-without-extension" />
+			<basename property="local.ixspec-file.name-without-extension" file="@{source}" suffix=".xspec" /> 
+			
+			<local name="local.ixspec-file.absolute-path" />
+			<path id="local.ixspec-file.absolute-path">
+				<fileset file="@{file}" />
+			</path>
+			
+			<local name="local.ixspec-file.name.original-extension" />
+			<pathconvert property="local.ixspec-file.name.original-extension" refid="local.ixspec-file.absolute-path">			
+				<chainedmapper>        			
+					<regexpmapper from="^.*\.([^\.]*)$" to="\1" handledirsep="true" />
+				</chainedmapper>
+			</pathconvert>    	    	
+			
+			<local name="local.xspec-file" />
+			<property name="local.xspec-file" location="@{tmp-dir}/${local.ixspec-file.name-without-extension}.xspec" />
+			
+			<ixspec:to-xspec
+				ixspec-file="@{source}"
+				result="${local.xspec-file}"
+				catalogs="@{catalogs}"
+				tmp-dir="@{tmp-dir}"
+				debug-dir="@{debug-dir}"
+				debug="@{debug}"
+			/>
+			
+			<xspec:run
+				file="${local.xspec-file}"
+				output-dir="@{output-dir}"
+				tmp-dir="@{tmp-dir}"
+				catalogs="@{catalogs}"
+				fail-on-error="@{fail-on-error}"
+				debug="@{debug}"
+			/>
+			
+		</sequential>
+		
+	</macrodef>
+	
+	
+	<macrodef
+		name="to-xspec"
+		description="Preprocess an iXSpec test file."
+		uri="http://xylarium.org/ns/liana/ant/macros/ixspec"> 
+		
+		<attribute name="ixspec-file" />
+		<attribute name="result" />
+		<attribute name="catalogs" default="${resource-resolution.catalog.default}" />
+		<attribute name="config" default="${xproc.processor.morgana.config.default}" />
+		<attribute name="tmp-dir" default="${base.tmp}" />
+		<attribute name="debug-dir" default="${base.debug}" />
+		<attribute name="debug" default="${debug}" />
+		
+		<sequential>
+			
+			<echo message="Converting @{ixspec-file} to XSpec" />
+			
+			<local name="local.ixspec-file.available" />
+			<available property="local.ixspec-file.available" file="@{ixspec-file}" type="file" />
+			<fail message="iXSpec file not found: @{ixspec-file}" unless:true="${local.ixspec-file.available}" />
+						
+			<local name="local.xproc-config.available" />
+			<available property="local.xproc-config.available" file="@{config}" type="file" />
+			<fail message="XProc config file not found: @{config}" unless:true="${local.xproc-config.available}" />
+			
+			<local name="local.xproc-home" />
+			<dirname property="local.xproc-home" file="${xproc.processor.morgana}" />
+			
+			<local name="local.xproc-lib" />
+			<property name="local.xproc-lib" location="${local.xproc-home}/MorganaXProc-IIIse_lib" />
+			
+			<local name="local.xproc-lib.available" />
+			<available property="local.xproc-lib.available" file="${local.xproc-lib}" type="dir" />
+			<fail message="XProc library not found: ${local.xproc-lib}" unless:true="${local.xproc-lib.available}" />
+									
+			<local name="local.uri.tmp-dir" />			
+			<makeurl property="local.uri.tmp-dir" file="@{tmp-dir}" validate="false" />
+			
+			<local name="local.uri.debug-dir" />
+			<makeurl property="local.uri.debug-dir" file="@{debug-dir}" validate="false" />	
+		
+			
+			<java classname="com.xml_project.morganaxproc3.XProcEngine">
+				<classpath>
+					<pathelement location="${local.xproc-lib}/*" />
+					<pathelement location="${xproc.processor.morgana}" />
+					<pathelement location="${xslt.processor.saxon}" />
+					<pathelement location="${resource-resolution.resolver.xml-commons}" />
+					<pathelement location="${ixml.processor.nine-ml.coffeegrinder}" />
+					<pathelement location="${ixml.processor.nine-ml.coffeefilter}" />
+					<pathelement location="${java.class.path}" />
+				</classpath>
+
+				<arg line="-config=@{config}" />	
+				<arg line="${xproc.pipeline.ixspec2xspec}" />					
+				<arg line="-catalogs=@{catalogs}" />								
+				<arg line="-input:source=@{ixspec-file}" />				
+				<arg line="-output:result=@{result}" />				
+				<arg line="-option:tmp-dir=${local.uri.tmp-dir}" />		
+				<arg line="-option:debug-dir=${local.uri.debug-dir}" />		
+				<arg line="-option:debug=@{debug}" />				
+				<arg line="-cp" />					
+			</java>
+			
+			
+		</sequential>		
+	</macrodef>		
+    
+</antlib>

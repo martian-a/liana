@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<x:description xmlns:x="http://xylarium.org/ns/ixml/test" grammar="http://xylarium.org/ns/ixml/grammar/xml-document-type-declaration.ixml">
-	
+<x:description xmlns:x="http://xylarium.org/ns/ixml/xspec" grammar="http://xylarium.org/ns/ixml/grammar/xml-document-type-declaration.ixml">
+
+	<x:helper stylesheet="http://xylarium.org/ns/xml/util/strip-space.xsl" />
+		
 	<x:scenario label="Functional tests for document type declaration iXML">
 		
 		<x:scenario label="External definition">
@@ -9,7 +11,9 @@
 				
 				<x:context href="../data/input/text/xhtml_system_path.txt" />
 				
-				<x:expect href="../data/expected/dtd-declaration/xhtml_system_path.xml" />
+				<x:expect href="../data/expected/dtd-declaration/xhtml_system_path.xml"
+					label="External definition with system identifier but no public identifier."
+					select="/*" />			
 				
 			</x:scenario>
 			
@@ -19,7 +23,9 @@
 					
 					<x:context href="../data/input/text/xhtml_public_path.txt" />
 					
-					<x:expect href="../data/expected/dtd-declaration/xhtml_public_path.xml" />
+					<x:expect href="../data/expected/dtd-declaration/xhtml_public_path.xml"
+						label="External definition with system identifier and public identifier."
+						select="/*" />			
 					
 				</x:scenario>
 				
@@ -27,7 +33,9 @@
 					
 					<x:context href="../data/input/text/xhtml_public_url.txt" />
 					
-					<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml" />
+					<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+						label="External definition with system identifier and public identifier."
+						select="/*" />			
 					
 				</x:scenario>
 				

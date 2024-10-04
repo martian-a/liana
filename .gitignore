@@ -6,6 +6,7 @@
 debug/
 logs/
 tmp/
+reports/
 
 # Local settings
 local.*.xml

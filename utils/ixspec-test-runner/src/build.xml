@@ -2,15 +2,16 @@
 <project
     basedir="."
     xmlns:if="ant:if"
-    xmlns:unless="ant:unless"
-    xmlns:li="http://xylarium.org/ns/liana/ant/macros"    
+    xmlns:unless="ant:unless"    
+    xmlns:ixspec="http://xylarium.org/ns/liana/ant/macros/ixspec"
+    xmlns:xspec="http://xylarium.org/ns/cherry/ant/macros/xspec"    
     name="ixspec-test-runner"
-    default="all">
+    default="test">
     
     
     <!-- #########################
          
-         iXML Test Runner
+         iXSpec - a test runner for iXML
          
          To list the targets in this build file:
          
@@ -19,19 +20,21 @@
          ########################## -->
 
 
-	<!-- Properties -->
+	<!-- Properties -->	
+	<dirname property="liana.root-dir" file="${ant.file.ixspec-test-runner}/../../../" />
+	<property name="liana.ixspec-test-runner" location="${liana.root-dir}/utils/ixspec-test-runner" />	
 	<xmlproperty
-		file="local.properties.xml"
+		file="${basedir}/local.properties.xml"
 		keeproot="false"
 		collapseattributes="true"
 		semanticattributes="true" />	
 	<xmlproperty
-		file="project.properties.xml"
+		file="${liana.ixspec-test-runner}/src/ant/project.properties.xml"
 		keeproot="false"
 		collapseattributes="true"
 		semanticattributes="true" />	
 	<xmlproperty
-		file="local.args.xml"
+		file="${basedir}/local.args.xml"
 		keeproot="true"
 		collapseattributes="true"
 		semanticattributes="true" />
@@ -43,98 +46,33 @@
 			<pathelement location="${ant.lib.contrib}" />
 		</classpath>
 	</taskdef>	
-	<taskdef file="${basedir}/antlib.xml" uri="http://xylarium.org/ns/liana/ant/macros" />
+	<taskdef file="${liana.ixspec-test-runner}/src/ant/ixspec.xml" uri="http://xylarium.org/ns/liana/ant/macros/ixspec" />
+	<taskdef file="${ant.lib.cherry}/ant/xspec.xml" uri="http://xylarium.org/ns/cherry/ant/macros/xspec" />
 	
-
+	
+	
+	<import file="${ant.lib.cherry}/ant/default_targets.xml" as="default" />
+	
+			
 	<target
-		name="init"
-		description="Initialise the build: create directories, call tstamp and other common actions."
-		depends="">
-		
-		<!-- Create a timestamp property -->
-		<tstamp>
-			<format property="timestamp.build-start" pattern="yyyyMMddHHmmss" />
-		</tstamp>	
-			    
-		<!-- Create log -->
-		<mkdir dir="${base.logs}" />							
-		<property name="logfile" location="${base.logs}/${ant.project.name}_${timestamp.build-start}.log" />	    
-	    <record name="${logfile}" action="start" append="true" />	    
-	    
-		<echo>${timestamp.build-start} # ${ant.project.name} # ${ant.project.invoked-targets}</echo>
-	    <echo>${ant.version}</echo>
-		<echo>Java version: ${ant.java.version}</echo>
-	    <echo>Debug: ${debug}</echo>	    	
-		<echo>Log file: ${logfile}</echo>			
-	    
-		<!-- Create dirs -->		
-		<mkdir dir="${base.tmp}" />
-		<mkdir dir="${base.debug}" />
-		<mkdir dir="${base.reports.html}" />		
-		<mkdir dir="${base.reports.xml}" />
-	    			
-	</target>
-	
-	
-	<target
-		name="check-dependencies"
-		description="Check that known dependencies are available."
-		depends="init">
-		
-		<record name="${logfile}" action="start" append="true" />	
-		
-		<local name="dependencies.list" />
-		<local name="sorted.dependencies.list" />
-		
-		<propertyselector property="dependencies.list" match="dependencies\.dependency\.[0-9]+" distinct="true" />
-		<sortlist property="sorted.dependencies.list" value="${dependencies.list}" />
-		
-		<for list="${sorted.dependencies.list}" param="dependency">
-			<sequential>
-				<echo message="Checking Dependency: ${@{dependency}.name}" />
-				<if>
-					<available file="${@{dependency}.property}" type="${@{dependency}.type}" />
-					<then>
-						<echo message="..found at: ${@{dependency}.property}" />
-					</then>
-					<else>
-						<fail message="...not found at ${@{dependency}.property} (type: ${@{dependency}.type})" />
-					</else>
-				</if>
-			</sequential>
-		</for>
-						
-	</target>	
-	
-	
-	<target
-		name="run-tests">
-		
-		<record name="${logfile}" action="start" append="true" />	
+		name="test"
+		depends="setup">
 		
 		<echo message="${args.input}" />
 		
-		<li:xproc
+		<ixspec:run
 			source="${args.input}"
-			pipeline="${xproc.pipeline.ixspec-test-runner}"
-			/>
+			output-dir="${base.reports}"
+			tmp-dir="${base.tmp}"
+			fail-on-error="true"
+		/>
 		
 	</target>
 	
 	
 	<target
-		name="clean"
-		description="Delete ephemeral outputs created by previous runs of this script.">
-		
-		<delete dir="${base.tmp}" failonerror="false" deleteonexit="true" />
-		<delete dir="${base.debug}" failonerror="false" deleteonexit="true" />
-		<delete dir="${base.logs}" failonerror="false" deleteonexit="true" />
-		
-	</target>  
-	
-	
-	<target
-		name="all"
-		depends="clean, init, check-dependencies, run-tests" />			
-    
+		name="setup"
+		depends="default.clean, default.init, default.check-dependencies, default.setup" />
+
+
 </project>

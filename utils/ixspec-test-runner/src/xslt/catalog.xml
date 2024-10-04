@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+	
+	<group id="xslt">
+		
+		<uri name="http://xylarium.org/ns/xml/util/identity.xsl"
+			uri="identity.xsl" />
+		
+		<uri name="http://xylarium.org/ns/xml/util/strip-space.xsl"
+			uri="strip_space.xsl" />
+		
+	</group>
+	
+</catalog>

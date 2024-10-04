@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://thecodeyard.org/ns/xml/schemas/regina/shared_properties.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron" ?>
 <properties>
 	
 	<debug value="false" />
 
 
+	<!-- Apache ANT -->
+	<ant>
+		<lib>
+			<cherry location="${liana.ixspec-test-runner}/lib/cherry" /> 
+		</lib>		
+	</ant>
+	
+
 	<!-- Invisible XML settings -->
 	<ixml>
 		<grammar>
 			<dtd>
-				<declaration location="${project.liana}/grammars/xml_document_type_declaration.ixml" />				
+				<declaration location="${liana.root-dir}/grammars/xml_document_type_declaration.ixml" />				
 			</dtd>
 		</grammar>
 	</ixml>
+	
+		
+	<!-- XML Entity and URI resolution -->
+	<resource-resolution>
+		<catalog>
+			<default location="${liana.root-dir}/catalog.xml" />
+		</catalog>
+	</resource-resolution>
 	    
 	
 	<!-- XProc settings -->
@@ -20,48 +35,79 @@
 		<processor>
 			<morgana>
 				<config>
-					<default location="${project.liana}/utils/ixspec-test-runner/src/xproc/config.xml" />
+					<default location="${ant.lib.cherry}/config/morgana/1/default.xml" />
 				</config>
 			</morgana>
 		</processor>
 		<pipeline>
-			<ixspec-test-runner location="${project.liana}/utils/ixspec-test-runner/src/xproc/ixspec_test_runner.xpl" />
+			<ixspec2xspec location="${liana.ixspec-test-runner}/src/xproc/ixspec2xspec.xpl" />
 		</pipeline>
 	</xproc>
-
-
-	<!-- XML Entity and URI resolution -->
-	<resource-resolution>
-		<catalog>
-			<default location="${project.liana}/catalog.xml" />
-		</catalog>
-	</resource-resolution>
+	
+	
+	<!-- XSLT settings -->
+	<xslt>
+		<processor>
+			<saxon>
+				<config>
+					<default location="${ant.lib.cherry}/config/saxon/12/default.xml" />
+					<strip-space-compatible location="${ant.lib.cherry}/config/saxon/12/strip_space_compatible.xml" />
+				</config>
+			</saxon>
+		</processor>
+	</xslt>	
+	
+	
+	<!-- XSpec properties -->
+	<xspec>
+		<processor>
+			<ant location="${xspec.home}/build.xml" />
+		</processor>
+		<compiler>
+			<xslt location="${xspec.home}/src/compiler/compile-xslt-tests.xsl" />
+			<xquery location="${xspec.home}/src/compiler/compile-xquery-tests.xsl" />
+		</compiler>
+		<reporter>
+			<html location="${xspec.home}/src/reporter/format-xspec-report.xsl" />
+			<summary location="${liana.ixspec-test-runner}/src/xslt/summarise_test_results.xsl" />
+			<properties location="${liana.ixspec-test-runner}/src/xslt/xspec_test_results2properties.xsl" />
+		</reporter>
+	</xspec>    
+	
+	
+	<!-- Testing -->
+	<test location="${liana.root-dir}/test">
+		<data location="${test}/data" />
+		<collection>
+			<ixml location="${test}/ixml" />
+			<xslt location="${test}/xslt" />
+		</collection>
+	</test>
 	
 	
 	<!-- Default directory paths -->
-	<base location="${basedir}">                   
+	<base location="${basedir}/../">                   
 		<tmp location="${base}/tmp" />
-		<debug location="${base}/debug" />
+		<debug location="${base}/debug">
+			<xspec location="${base.debug}/xspec" />
+		</debug>
 		<logs location="${base}/logs" />
-		<reports location="${base}/reports">
-			<html location="${base.reports}/html" />
-			<xml location="${base.reports}/xml" />
-		</reports>
+		<reports location="${base}/reports" />		
 	</base>
 		
 	
 	<!-- List of dependencies to check -->
 	<dependencies>
 		<dependency.01 name="ANT Contrib" property="${ant.lib.contrib}" type="file" />
-		<dependency.02 name="Morgana XProc III" property="${xproc.processor.morgana}" type="file" />
-		<dependency.03 name="Morgana XProc III config for iXSpec Test Runner" property="${xproc.processor.morgana.config.default}" type="file" />
-		<dependency.04 name="Saxon" property="${xslt.processor.saxon}" type="file" />
-		<dependency.05 name="XML Resolver" property="${resource-resolution.resolver.xml-commons}" type="file" />
-		<dependency.06 name="Default XML Catalog" property="${resource-resolution.catalog.default}" type="file" />
-		<dependency.07 name="NineML CoffeeFilter" property="${ixml.processor.nine-ml.coffeefilter}" type="file" />
-		<dependency.08 name="NineML CoffeeGrinder" property="${ixml.processor.nine-ml.coffeegrinder}" type="file" />
-		<!-- dependency.09 name="NineML CoffeePot" property="${ixml.processor.nine-ml.coffeepot}" type="file" / -->
-		<!-- dependency.10 name="NineML CoffeeSacks" property="${ixml.processor.nine-ml.coffeesacks}" type="file" / -->
+		<dependency.02 name="Cherry ANT Library" property="${ant.lib.cherry}" type="dir" />		
+		<dependency.03 name="Morgana XProc III" property="${xproc.processor.morgana}" type="file" />
+		<dependency.04 name="Morgana XProc III config for iXSpec Test Runner" property="${xproc.processor.morgana.config.default}" type="file" />
+		<dependency.05 name="Saxon" property="${xslt.processor.saxon}" type="file" />
+		<dependency.06 name="Saxon config for XSpec" property="${xslt.processor.saxon.config.default}" type="file" />
+		<dependency.07 name="XML Resolver" property="${resource-resolution.resolver.xml-commons}" type="file" />
+		<dependency.08 name="Default XML Catalog" property="${resource-resolution.catalog.default}" type="file" />
+		<dependency.09 name="NineML CoffeeFilter" property="${ixml.processor.nine-ml.coffeefilter}" type="file" />
+		<dependency.10 name="NineML CoffeeGrinder" property="${ixml.processor.nine-ml.coffeegrinder}" type="file" />
 	</dependencies>
 	
 	
