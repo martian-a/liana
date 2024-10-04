@@ -51,7 +51,7 @@
 	
 	<!-- XSpec settings -->
 	<xspec>
-		<home location="/path/to/official-xspec" />
+		<home location="${ixspec.root-dir}/lib/xspec" />
 	</xspec>
 	
 	

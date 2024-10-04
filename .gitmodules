@@ -1,0 +1,3 @@
+[submodule "lib/xspec"]
+	path = lib/xspec
+	url = git@github.com:xspec/xspec.git
