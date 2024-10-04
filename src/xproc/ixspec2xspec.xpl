@@ -37,12 +37,8 @@
 	
 	<u:save-debug-snapshot debug="{$debug}" href="{concat($debug-base-path, '/input.xml')}" />
 	
-	
-	<p:xslt>
-		<p:with-input port="stylesheet">
-			<p:document href="../xslt/ixspec2xspec.xsl" />
-		</p:with-input>
-	</p:xslt>
+	<p:namespace-rename from="http://xylarium.org/ns/ixml/xspec" to="http://www.jenitennison.com/xslt/xspec" />
+	<p:add-attribute match="/*" attribute-name="stylesheet" attribute-value="http://xylarium.org/ns/xml/util/identity.xsl" />
 	
 	<u:save-debug-snapshot debug="{$debug}" href="{concat($debug-base-path, '/', $test-file-name, '.old_scenarios.xspec')}" />
 
