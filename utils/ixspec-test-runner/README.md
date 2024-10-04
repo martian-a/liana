@@ -1,3 +1,0 @@
-# iXSpec Test Runner
-
-

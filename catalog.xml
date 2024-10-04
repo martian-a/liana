@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
 	
-	<nextCatalog catalog="grammars/catalog.xml" />
-	<nextCatalog catalog="utils/ixspec-test-runner/src/catalog.xml" />
+	<nextCatalog catalog="test/data/grammars/catalog.xml" />
+	<nextCatalog catalog="src/catalog.xml" />
 	
 </catalog>

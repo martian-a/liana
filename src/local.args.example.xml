@@ -21,6 +21,6 @@
          
          ########################## -->
 	
-	<input location="${liana.root-dir}/test/ixml/dtd_declaration.ixspec" />
+	<input location="${ixspec.root-dir}/test/ixml/dtd_declaration.ixspec" />
 	
 </args>

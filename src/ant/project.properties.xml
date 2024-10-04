@@ -7,7 +7,7 @@
 	<!-- Apache ANT -->
 	<ant>
 		<lib>
-			<cherry location="${liana.ixspec-test-runner}/lib/cherry" /> 
+			<cherry location="${ixspec.root-dir}/lib/cherry" /> 
 		</lib>		
 	</ant>
 	
@@ -16,7 +16,7 @@
 	<ixml>
 		<grammar>
 			<dtd>
-				<declaration location="${liana.root-dir}/grammars/xml_document_type_declaration.ixml" />				
+				<declaration location="${ixspec.root-dir}/grammars/xml_document_type_declaration.ixml" />				
 			</dtd>
 		</grammar>
 	</ixml>
@@ -25,7 +25,7 @@
 	<!-- XML Entity and URI resolution -->
 	<resource-resolution>
 		<catalog>
-			<default location="${liana.root-dir}/catalog.xml" />
+			<default location="${ixspec.root-dir}/catalog.xml" />
 		</catalog>
 	</resource-resolution>
 	    
@@ -40,7 +40,7 @@
 			</morgana>
 		</processor>
 		<pipeline>
-			<ixspec2xspec location="${liana.ixspec-test-runner}/src/xproc/ixspec2xspec.xpl" />
+			<ixspec2xspec location="${ixspec.root-dir}/src/xproc/ixspec2xspec.xpl" />
 		</pipeline>
 	</xproc>
 	
@@ -69,14 +69,14 @@
 		</compiler>
 		<reporter>
 			<html location="${xspec.home}/src/reporter/format-xspec-report.xsl" />
-			<summary location="${liana.ixspec-test-runner}/src/xslt/summarise_test_results.xsl" />
-			<properties location="${liana.ixspec-test-runner}/src/xslt/xspec_test_results2properties.xsl" />
+			<summary location="${ixspec.root-dir}/src/xslt/summarise_test_results.xsl" />
+			<properties location="${ixspec.root-dir}/src/xslt/xspec_test_results2properties.xsl" />
 		</reporter>
 	</xspec>    
 	
 	
 	<!-- Testing -->
-	<test location="${liana.root-dir}/test">
+	<test location="${ixspec.root-dir}/test">
 		<data location="${test}/data" />
 		<collection>
 			<ixml location="${test}/ixml" />

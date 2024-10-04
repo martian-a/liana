@@ -21,15 +21,14 @@
 
 
 	<!-- Properties -->	
-	<dirname property="liana.root-dir" file="${ant.file.ixspec-test-runner}/../../../" />
-	<property name="liana.ixspec-test-runner" location="${liana.root-dir}/utils/ixspec-test-runner" />	
+	<dirname property="ixspec.root-dir" file="${ant.file.ixspec-test-runner}/../" />	
 	<xmlproperty
 		file="${basedir}/local.properties.xml"
 		keeproot="false"
 		collapseattributes="true"
 		semanticattributes="true" />	
 	<xmlproperty
-		file="${liana.ixspec-test-runner}/src/ant/project.properties.xml"
+		file="${ixspec.root-dir}/src/ant/project.properties.xml"
 		keeproot="false"
 		collapseattributes="true"
 		semanticattributes="true" />	
@@ -46,7 +45,7 @@
 			<pathelement location="${ant.lib.contrib}" />
 		</classpath>
 	</taskdef>	
-	<taskdef file="${liana.ixspec-test-runner}/src/ant/ixspec.xml" uri="http://xylarium.org/ns/liana/ant/macros/ixspec" />
+	<taskdef file="${ixspec.root-dir}/src/ant/ixspec.xml" uri="http://xylarium.org/ns/liana/ant/macros/ixspec" />
 	<taskdef file="${ant.lib.cherry}/ant/xspec.xml" uri="http://xylarium.org/ns/cherry/ant/macros/xspec" />
 	
 	
