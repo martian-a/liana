@@ -45,4 +45,4 @@ Note: (2024-09-26) Only works for external DTD definitions.
               -digit : ["0"-"9"].
 -lowercase-character : ["a"-"z"].
 -uppercase-character : ["A"-"Z"].
-    -space-character : [Zs].
+    -space-character : -[Zs].
