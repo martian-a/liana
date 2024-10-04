@@ -1,3 +1,6 @@
 [submodule "lib/xspec"]
 	path = lib/xspec
 	url = git@github.com:xspec/xspec.git
+[submodule "lib/ixml"]
+	path = lib/ixml
+	url = git@github.com:invisibleXML/ixml.git
