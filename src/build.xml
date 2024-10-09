@@ -3,8 +3,8 @@
     basedir="."
     xmlns:if="ant:if"
     xmlns:unless="ant:unless"    
-    xmlns:ixspec="http://xylarium.org/ns/liana/ant/macros/ixspec"
-    xmlns:xspec="http://xylarium.org/ns/cherry/ant/macros/xspec"    
+    xmlns:ixspec="http://xylarium.org/ns/ant/macros/utils/ixspec"
+    xmlns:xspec="http://xylarium.org/ns/ant/macros/utils/xspec"    
     name="ixspec-test-runner"
     default="test">
     
@@ -45,8 +45,8 @@
 			<pathelement location="${ant.lib.contrib}" />
 		</classpath>
 	</taskdef>	
-	<taskdef file="${ixspec.root-dir}/src/ant/ixspec.xml" uri="http://xylarium.org/ns/liana/ant/macros/ixspec" />
-	<taskdef file="${ant.lib.cherry}/ant/xspec.xml" uri="http://xylarium.org/ns/cherry/ant/macros/xspec" />
+	<taskdef file="${ixspec.root-dir}/src/ant/ixspec.xml" uri="http://xylarium.org/ns/ant/macros/utils/ixspec" />
+	<taskdef file="${ant.lib.cherry}/ant/xspec.xml" uri="http://xylarium.org/ns/ant/macros/utils/xspec" />
 	
 	
 	

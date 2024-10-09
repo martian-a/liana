@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+	
+	<nextCatalog catalog="cherry/catalog.xml" />
+	
+	<group id="external-resources">
+		
+		<uri name="http://www.jenitennison.com/xslt/xspec"
+			uri="xspec/src/schemas/xspec.rnc" />
+		
+		<uri name="http://www.jenitennison.com/xslt/xspec.sch"
+			uri="xspec/src/schemas/xspec.sch" />
+			
+	</group>
+	
+</catalog>

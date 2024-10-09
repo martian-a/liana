@@ -16,7 +16,7 @@
     </p:documentation>
     
     
-	<p:import href="save_debug_snapshot.xpl" />
+	<p:import href="http://xylarium.org/ns/xproc/steps/utils/save-debug-snapshot.xpl" />
     
     <p:input port="source" sequence="false" primary="true" content-types="xml" />
 		
@@ -38,7 +38,7 @@
 	<u:save-debug-snapshot debug="{$debug}" href="{concat($debug-base-path, '/input.xml')}" />
 	
 	<p:namespace-rename from="http://xylarium.org/ns/ixml/xspec" to="http://www.jenitennison.com/xslt/xspec" />
-	<p:add-attribute match="/*" attribute-name="stylesheet" attribute-value="http://xylarium.org/ns/xml/util/identity.xsl" />
+	<p:add-attribute match="/*" attribute-name="stylesheet" attribute-value="http://xylarium.org/ns/xslt/utils/identity.xsl" />
 	
 	<u:save-debug-snapshot debug="{$debug}" href="{concat($debug-base-path, '/', $test-file-name, '.old_scenarios.xspec')}" />
 

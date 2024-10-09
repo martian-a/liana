@@ -2,13 +2,13 @@
 <antlib
     xmlns:if="ant:if"
     xmlns:unless="ant:unless"
-    xmlns:xspec="http://xylarium.org/ns/cherry/ant/macros/xspec">
+    xmlns:xspec="http://xylarium.org/ns/ant/macros/utils/xspec">
 	
     
     <macrodef
         name="run"
         description="Run an XSpec test file."
-        uri="http://xylarium.org/ns/cherry/ant/macros/xspec"> 
+        uri="http://xylarium.org/ns/ant/macros/utils/xspec"> 
         
         <attribute name="file" />
     	<attribute name="output-dir" />
@@ -132,7 +132,7 @@
 	<macrodef
 		name="compile"
 		description="Compile an XSpec test file."
-		uri="http://xylarium.org/ns/cherry/ant/macros/xspec"> 
+		uri="http://xylarium.org/ns/ant/macros/utils/xspec"> 
 		
 		<attribute name="xspec-file" />
 		<attribute name="result" />
@@ -176,7 +176,7 @@
 	<macrodef
 		name="evaluate"
 		description="Execute a compiled XSpec test file."
-		uri="http://xylarium.org/ns/cherry/ant/macros/xspec"> 
+		uri="http://xylarium.org/ns/ant/macros/utils/xspec"> 
 		
 		<attribute name="compiled-xspec-file" />
 		<attribute name="result" />
@@ -233,7 +233,7 @@
 	<macrodef
 		name="report"
 		description="Generate a report containing the results of an XSpec test."
-		uri="http://xylarium.org/ns/cherry/ant/macros/xspec"> 
+		uri="http://xylarium.org/ns/ant/macros/utils/xspec"> 
 		
 		<attribute name="xspec-results-file" />
 		<attribute name="result" />
@@ -264,7 +264,7 @@
     <macrodef
     	name="summarise"
     	description="Summarise the results of an XSpec test."
-    	uri="http://xylarium.org/ns/cherry/ant/macros/xspec">
+    	uri="http://xylarium.org/ns/ant/macros/utils/xspec">
     	
     	<attribute name="xspec-results-xml" />
     	<attribute name="xspec-results-html" />
@@ -321,7 +321,7 @@
 	<macrodef
 		name="xslt"
 		description="Transform an XSLT XSpec test file."
-		uri="http://xylarium.org/ns/cherry/ant/macros/xspec"> 
+		uri="http://xylarium.org/ns/ant/macros/utils/xspec"> 
 		
 		<attribute name="source" default="" />
 		<attribute name="stylesheet" />

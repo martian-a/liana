@@ -51,7 +51,6 @@
 			<saxon>
 				<config>
 					<default location="${ant.lib.cherry}/config/saxon/12/default.xml" />
-					<strip-space-compatible location="${ant.lib.cherry}/config/saxon/12/strip_space_compatible.xml" />
 				</config>
 			</saxon>
 		</processor>

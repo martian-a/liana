@@ -2,13 +2,13 @@
 <antlib
     xmlns:if="ant:if"
     xmlns:unless="ant:unless"
-    xmlns:xspec="http://xylarium.org/ns/cherry/ant/macros/xspec"
-    xmlns:ixspec="http://xylarium.org/ns/liana/ant/macros/ixspec">	
+    xmlns:xspec="http://xylarium.org/ns/ant/macros/utils/xspec"
+    xmlns:ixspec="http://xylarium.org/ns/ant/macros/utils/ixspec">	
 		
 	
 	<macrodef name="run"
 		description="Run an iXSpec test file."
-		uri="http://xylarium.org/ns/liana/ant/macros/ixspec">
+		uri="http://xylarium.org/ns/ant/macros/utils/ixspec">
 		
 		<attribute name="source" />
 		<attribute name="output-dir" />
@@ -64,7 +64,7 @@
 	<macrodef
 		name="to-xspec"
 		description="Preprocess an iXSpec test file."
-		uri="http://xylarium.org/ns/liana/ant/macros/ixspec"> 
+		uri="http://xylarium.org/ns/ant/macros/utils/ixspec"> 
 		
 		<attribute name="ixspec-file" />
 		<attribute name="result" />
