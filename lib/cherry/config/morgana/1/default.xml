@@ -10,6 +10,7 @@
 	<mediatype-mapping>
 		<map file-extension="ixml" media-type="text/plain" />
 		<map file-extension="ixspec" media-type="application/xml" />
+		<map file-extension="inp" media-type="text/plain" />
 	</mediatype-mapping>
 	
 	<!--

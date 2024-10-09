@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c:directory xmlns:c="http://www.w3.org/ns/xproc-step" path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/" xml:base="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/" name="evens-and-odds">
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/trees/" xml:base="trees/" name="trees" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/input/" xml:base="input/" name="input" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/misc/" xml:base="misc/" name="misc" />
+	<scenario label="evens-and-odds">
+		<unknown path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/evens-and-odds.xml" xml:base="evens-and-odds.xml" name="evens-and-odds.xml" />
+		<grammar path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/evens-and-odds.ixml" xml:base="evens-and-odds.ixml" name="evens-and-odds.ixml" />
+	</scenario>
+	<scenario label="ixml-one-line">
+		<grammar path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml-one-line.ixml" xml:base="ixml-one-line.ixml" name="ixml-one-line.ixml" />
+		<expect path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml-one-line.corr.output.xml" xml:base="ixml-one-line.corr.output.xml" name="ixml-one-line.corr.output.xml" />
+		<context path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml-one-line.inp" xml:base="ixml-one-line.inp" name="ixml-one-line.inp" />
+	</scenario>
+	<scenario label="ixml">
+		<scenario label="ixml3">
+			<expect path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml3.output.xml" xml:base="ixml3.output.xml" name="ixml3.output.xml" />
+			<grammar path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml3.ixml" xml:base="ixml3.ixml" name="ixml3.ixml" />
+			<context path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml3.inp" xml:base="ixml3.inp" name="ixml3.inp" />
+		</scenario>
+		<scenario label="ixml">
+			<context path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml.inp" xml:base="ixml.inp" name="ixml.inp" />
+			<expect path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml.output.xml" xml:base="ixml.output.xml" name="ixml.output.xml" />
+			<grammar path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml.ixml" xml:base="ixml.ixml" name="ixml.ixml" />
+		</scenario>
+		<scenario label="ixml1">
+			<expect path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml1.output.xml" xml:base="ixml1.output.xml" name="ixml1.output.xml" />
+			<context path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml1.inp" xml:base="ixml1.inp" name="ixml1.inp" />
+			<grammar path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml1.ixml" xml:base="ixml1.ixml" name="ixml1.ixml" />
+		</scenario>
+		<scenario label="ixml2">
+			<context path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml2.inp" xml:base="ixml2.inp" name="ixml2.inp" />
+			<grammar path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml2.ixml" xml:base="ixml2.ixml" name="ixml2.ixml" />
+			<expect path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml2.output.xml" xml:base="ixml2.output.xml" name="ixml2.output.xml" />
+		</scenario>
+	</scenario>
+</c:directory>

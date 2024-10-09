@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/" xml:base="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/" name="evens-and-odds" xmlns:c="http://www.w3.org/ns/xproc-step">
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/trees/" xml:base="trees/" name="trees" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/input/" xml:base="input/" name="input" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/README.md" xml:base="README.md" name="README.md" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/misc/" xml:base="misc/" name="misc" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/test-catalog.xml" xml:base="test-catalog.xml" name="test-catalog.xml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/evens-and-odds.xml" xml:base="evens-and-odds.xml" name="evens-and-odds.xml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/evens-and-odds/evens-and-odds.ixml" xml:base="evens-and-odds.ixml" name="evens-and-odds.ixml" />
+</c:directory>

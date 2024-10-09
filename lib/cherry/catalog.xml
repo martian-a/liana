@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+	
+	<group id="ant">
+		
+		<uri name="http://xylarium.org/ns/ant/targets/utils/default-targets.xml"
+			uri="ant/default_targets.xml" />
+		
+		<uri name="http://xylarium.org/ns/ant/macros/utils/xspec.xml"
+			uri="ant/xspec.xml" />
+		
+	</group>
+	
+	
+	<group id="xproc">
+		
+		<uri name="http://xylarium.org/ns/xproc/steps/utils/save-debug-snapshot.xpl"
+			uri="xproc/save_debug_snapshot.xpl" />
+		
+		<uri name="http://xylarium.org/ns/xproc/steps/utils/directory-list.xpl"
+			uri="xproc/directory_list.xpl" />
+				
+	</group>
+	
+	
+	<group id="xslt">
+		
+		<uri name="http://xylarium.org/ns/xslt/utils/identity.xsl"
+			uri="xslt/identity.xsl" />
+		
+		<uri name="http://xylarium.org/ns/xslt/utils/directory-list.xsl"
+			uri="xslt/add_path_to_directory_list.xsl" />
+		
+	</group>
+	
+</catalog>

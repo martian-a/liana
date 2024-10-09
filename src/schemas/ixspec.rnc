@@ -1,0 +1,35 @@
+# iXSpec = Invisible XML Test Specifications
+# This schema is for iXSpec documents, which can be used to describe the behaviour of an iXML grammar. 
+# It is an (unofficial) extension of XSpec (https://github.com/xspec/xspec/wiki)
+
+datatypes xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
+
+default namespace ixs = "http://xylarium.org/ns/ixml/xspec"
+namespace x = "http://www.jenitennison.com/xslt/xspec"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+include "http://www.jenitennison.com/xslt/xspec"
+
+description |=
+	element ixs:description {		
+		description.attlist,
+		threads?,
+		(helper | global-param | import | scenario | pending-element | variable)+ 
+	}
+	
+description.attlist = (
+	attribute grammar { xsd:anyURI },
+	
+	common-attributes,
+	attribute version { xsd:decimal }?,
+	attribute preserve-space { xsd:NMTOKENS }?,
+	
+	[ a:defaultValue = "import" ]
+	attribute run-as { "import" | "external" }?,
+
+	[ a:defaultValue = "no" ]
+	attribute measure-time { boolean.datatype }?,
+	
+	[ a:defaultValue = "inf" ]
+	attribute result-file-threshold { "inf" | xsd:positiveInteger }?		
+)

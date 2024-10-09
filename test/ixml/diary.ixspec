@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://xylarium.org/ns/ixml/xspec" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="http://www.jenitennison.com/xslt/xspec.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<ixs:description xmlns:ixs="http://xylarium.org/ns/ixml/xspec"
+	xmlns:x="http://www.jenitennison.com/xslt/xspec" 
+	grammar="https://github.com/invisibleXML/ixml/tests/correct/diary.ixml">
+
+	<x:helper stylesheet="http://xylarium.org/ns/xslt/utils/strip-space.xsl" />
+		
+	<x:scenario label="Diary">
+		
+		<x:scenario label="Correct">			
+				
+			<x:context href="../../lib/ixml/tests/correct/diary.inp" />
+				
+			<x:expect href="../../lib/ixml/tests/correct/diary.output.xml" 
+				label="Per official test suite"
+				select="/*" />	
+										
+		</x:scenario>
+		
+	</x:scenario>
+	
+</ixs:description>

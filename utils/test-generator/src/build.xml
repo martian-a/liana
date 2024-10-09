@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    basedir="."
+    xmlns:if="ant:if"
+    xmlns:unless="ant:unless"    
+    xmlns:ixspec="http://xylarium.org/ns/ant/macros/utils/ixspec"
+    xmlns:xspec="http://xylarium.org/ns/ant/macros/utils/xspec"    
+    name="ixspec-test-generator"
+    default="generate">
+    
+    
+    <!-- #########################
+         
+         iXSpec Test Generator - a utility for creating iXSpec test files from the official iXML test suite
+         
+         To list the targets in this build file:
+         
+         $> ant -p
+         
+         ########################## -->
+
+
+	<!-- Properties -->	
+	<dirname property="ixspec.root-dir" file="${ant.file.ixspec-test-generator}/../../../" />	
+	<xmlproperty
+		file="${ixspec.root-dir}/src/local.properties.xml"
+		keeproot="false"
+		collapseattributes="true"
+		semanticattributes="true" />	
+	<xmlproperty
+		file="${ixspec.root-dir}/src/ant/project.properties.xml"
+		keeproot="false"
+		collapseattributes="true"
+		semanticattributes="true" />	
+	<xmlproperty
+		file="${basedir}/ant/module.properties.xml"
+		keeproot="false"
+		collapseattributes="true"
+		semanticattributes="true" />		
+	<xmlproperty
+		file="${basedir}/local.args.xml"
+		keeproot="true"
+		collapseattributes="true"
+		semanticattributes="true" />
+	
+    
+	<!-- Import ant-contrib and macro-defs -->
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<pathelement location="${ant.lib.contrib}" />
+		</classpath>
+	</taskdef>	
+	<taskdef file="${ant.lib.cherry}/ant/xspec.xml" uri="http://xylarium.org/ns/ant/macros/utils/xspec" />
+	<taskdef file="${ixspec.root-dir}/src/ant/ixspec.xml" uri="http://xylarium.org/ns/ant/macros/utils/ixspec" />
+	<taskdef file="${basedir}/ant/ixspec_test_generator.xml" uri="http://xylarium.org/ns/ant/macros/utils/ixspec" />
+	
+		
+	<import file="${ant.lib.cherry}/ant/default_targets.xml" as="default" />
+	
+			
+	<target
+		name="generate"
+		depends="setup">
+		
+		<ixspec:create
+			summary="${args.summary}"
+			tests-dir="${args.tests-dir}"
+			output-dir="${args.output-dir}"
+			tmp-dir="${base.tmp.ixspec-generator}"
+			debug-dir="${base.debug.ixspec-generator}"
+		/>
+		
+	</target>
+	
+	
+	<target
+		name="setup"
+		depends="default.clean, default.init, default.check-dependencies, default.setup" />
+
+
+</project>

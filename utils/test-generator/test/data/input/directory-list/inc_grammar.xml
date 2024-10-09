@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/" xml:base="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/" name="ixml" xmlns:c="http://www.w3.org/ns/xproc-step">
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml-one-line.ixml" xml:base="ixml-one-line.ixml" name="ixml-one-line.ixml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml3.output.xml" xml:base="ixml3.output.xml" name="ixml3.output.xml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml.inp" xml:base="ixml.inp" name="ixml.inp" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/bnf.inp" xml:base="bnf.inp" name="bnf.inp" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml.output.xml" xml:base="ixml.output.xml" name="ixml.output.xml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml3.ixml" xml:base="ixml3.ixml" name="ixml3.ixml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml1.output.xml" xml:base="ixml1.output.xml" name="ixml1.output.xml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml-one-line.corr.output.xml" xml:base="ixml-one-line.corr.output.xml" name="ixml-one-line.corr.output.xml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml2.inp" xml:base="ixml2.inp" name="ixml2.inp" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml3.inp" xml:base="ixml3.inp" name="ixml3.inp" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/bnf.ixml" xml:base="bnf.ixml" name="bnf.ixml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/bnf.output.xml" xml:base="bnf.output.xml" name="bnf.output.xml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml-no-spaces.inp" xml:base="ixml-no-spaces.inp" name="ixml-no-spaces.inp" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml2.ixml" xml:base="ixml2.ixml" name="ixml2.ixml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml1.inp" xml:base="ixml1.inp" name="ixml1.inp" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml-spaces.output.xml" xml:base="ixml-spaces.output.xml" name="ixml-spaces.output.xml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml.ixml" xml:base="ixml.ixml" name="ixml.ixml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml-no-spaces.ixml" xml:base="ixml-no-spaces.ixml" name="ixml-no-spaces.ixml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml1.ixml" xml:base="ixml1.ixml" name="ixml1.ixml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml2.output.xml" xml:base="ixml2.output.xml" name="ixml2.output.xml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml-spaces.ixml" xml:base="ixml-spaces.ixml" name="ixml-spaces.ixml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/test-catalog.xml" xml:base="test-catalog.xml" name="test-catalog.xml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml-no-spaces.output.xml" xml:base="ixml-no-spaces.output.xml" name="ixml-no-spaces.output.xml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml-spaces.inp" xml:base="ixml-spaces.inp" name="ixml-spaces.inp" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/ixml-one-line.inp" xml:base="ixml-one-line.inp" name="ixml-one-line.inp" />
+</c:directory>

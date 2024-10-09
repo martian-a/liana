@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/" xml:base="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/" name="tests" xmlns:c="http://www.w3.org/ns/xproc-step">
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/jwl/" xml:base="jwl/" name="jwl" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/correct/" xml:base="correct/" name="correct" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/tools/" xml:base="tools/" name="tools" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/parse/" xml:base="parse/" name="parse" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ambiguous/" xml:base="ambiguous/" name="ambiguous" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/error/" xml:base="error/" name="error" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/performance/" xml:base="performance/" name="performance" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/extra/" xml:base="extra/" name="extra" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/syntax/" xml:base="syntax/" name="syntax" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/misc/" xml:base="misc/" name="misc" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/test-catalog.xml" xml:base="test-catalog.xml" name="test-catalog.xml" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/ixml/" xml:base="ixml/" name="ixml" />
+	<c:file path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/readme.md" xml:base="readme.md" name="readme.md" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/chars/" xml:base="chars/" name="chars" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/reference/" xml:base="reference/" name="reference" />
+	<c:directory path="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/grammar-misc/" xml:base="grammar-misc/" name="grammar-misc" />
+</c:directory>

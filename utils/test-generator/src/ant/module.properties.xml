@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>	
+	
+	<!-- XProc settings -->
+	<xproc>
+		<pipeline>		
+			<ixspec-test-generator location="${basedir}/xproc/ixspec_test_generator.xpl" />
+		</pipeline>
+	</xproc>
+	
+	<!-- Default directory paths -->
+	<base>                   
+		<tmp>
+			<ixspec-generator location="${base.tmp}/ixspec-generator" />
+		</tmp>
+		<debug>
+			<ixspec-generator location="${base.debug}/ixspec-generator" />
+		</debug>
+	</base>
+	
+</properties>
