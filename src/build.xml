@@ -49,15 +49,13 @@
 	<taskdef file="${ant.lib.cherry}/ant/xspec.xml" uri="http://xylarium.org/ns/ant/macros/utils/xspec" />
 	
 	
-	
+	<!-- Import Xylarium's shared library of ANT targets -->
 	<import file="${ant.lib.cherry}/ant/default_targets.xml" as="default" />
 	
 			
 	<target
 		name="test"
 		depends="setup">
-		
-		<echo message="${args.input}" />
 		
 		<ixspec:run
 			source="${args.input}"
