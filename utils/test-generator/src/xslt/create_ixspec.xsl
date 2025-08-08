@@ -4,7 +4,7 @@
 	xmlns:x="http://www.jenitennison.com/xslt/xspec"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns:xym="http://xylarium.org/ns/ixml/xspec"
+	xmlns:xym="http://xylarium.org/ns/xspec/utils/ixspec"
 	exclude-result-prefixes="#all"
 	expand-text="true"
 	version="3.0">

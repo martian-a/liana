@@ -4,7 +4,7 @@
     xmlns:p="http://www.w3.org/ns/xproc"      
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:x="http://www.jenitennison.com/xslt/xspec"
-    xmlns:ix="http://xylarium.org/ns/ixml/xspec"
+    xmlns:ix="http://xylarium.org/ns/xspec/utils/ixspec"
     xmlns:xym="http://xylarium.org/ns/xproc/steps"    
     xmlns:u="http://xylarium.org/ns/xproc/steps/utils"   
     name="ixspec-test-generator"

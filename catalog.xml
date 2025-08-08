@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
 	
-	<uri name="http://xylarium.org/ns/ixml/xspec"
+	<uri name="http://xylarium.org/ns/xspec/utils/ixspec"
 		uri="src/schemas/ixspec.rnc" />
 	
 	<nextCatalog catalog="test/data/grammars/catalog.xml" />

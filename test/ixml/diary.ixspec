@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://xylarium.org/ns/ixml/xspec" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="http://xylarium.org/ns/xspec/utils/ixspec" type="application/relax-ng-compact-syntax"?>
 <?xml-model href="http://www.jenitennison.com/xslt/xspec.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<ixs:description xmlns:ixs="http://xylarium.org/ns/ixml/xspec"
+<ixs:description xmlns:ixs="http://xylarium.org/ns/xspec/utils/ixspec"
 	xmlns:x="http://www.jenitennison.com/xslt/xspec" 
-	grammar="https://github.com/invisibleXML/ixml/tests/correct/diary.ixml">
+	grammar="file:/home/sheila/Code/repositories/liana/lib/ixml/tests/correct/diary.ixml">
 
 	<x:helper stylesheet="http://xylarium.org/ns/xslt/utils/strip-space.xsl" />
 		

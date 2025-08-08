@@ -4,7 +4,7 @@
 
 datatypes xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
 
-default namespace ixs = "http://xylarium.org/ns/ixml/xspec"
+default namespace ixs = "http://xylarium.org/ns/xspec/utils/ixspec"
 namespace x = "http://www.jenitennison.com/xslt/xspec"
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
