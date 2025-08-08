@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet 
 	xmlns:x="http://www.jenitennison.com/xslt/xspec"
-	xmlns:xym="http://xylarium.org/ns/ixml/xspec"
+	xmlns:xym="http://xylarium.org/ns/xspec/utils/ixspec"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	exclude-result-prefixes="xs"
@@ -15,7 +15,7 @@
 	</xsl:template>
 	
 	
-	<xsl:include href="identity.xsl" />
+	<xsl:include href="http://xylarium.org/ns/xslt/utils/identity.xsl" />
 	
 	
 </xsl:stylesheet>
