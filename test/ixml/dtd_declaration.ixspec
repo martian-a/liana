@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<x:description xmlns:x="http://xylarium.org/ns/xspec/utils/ixspec" grammar="http://xylarium.org/ns/ixml/grammars/xml-document-type-declaration.ixml">
+<x:description xmlns:x="http://xylarium.org/ns/xml/ixspec" grammar="http://xylarium.org/ns/ixml/grammars/xml-document-type-declaration.ixml">
 
 	<x:helper stylesheet="http://xylarium.org/ns/xslt/utils/strip-space.xsl" />
 		

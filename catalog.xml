@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
 	
-	<uri name="http://xylarium.org/ns/xspec/utils/ixspec"
+	<uri name="http://xylarium.org/ns/xml/ixspec"
 		uri="src/schemas/ixspec.rnc" />
 	
 	<nextCatalog catalog="test/data/grammars/catalog.xml" />
 	<nextCatalog catalog="src/catalog.xml" />
+	<nextCatalog catalog="lib/catalog.xml" />
 	
 </catalog>

@@ -4,8 +4,8 @@
     xmlns:p="http://www.w3.org/ns/xproc"      
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:x="http://www.jenitennison.com/xslt/xspec"
-    xmlns:ix="http://xylarium.org/ns/xspec/utils/ixspec"
-    xmlns:xym="http://xylarium.org/ns/xproc/steps"    
+    xmlns:ix="http://xylarium.org/ns/xml/ixspec"
+    xmlns:xym="http://xylarium.org/ns/xproc/steps/ixspec"    
     xmlns:u="http://xylarium.org/ns/xproc/steps/utils"   
     name="ixspec2xspec"
     type="xym:ixspec2xspec"
@@ -37,7 +37,7 @@
 	
 	<u:save-debug-snapshot debug="{$debug}" href="{concat($debug-base-path, '/input.xml')}" />
 	
-	<p:namespace-rename from="http://xylarium.org/ns/xspec/utils/ixspec" to="http://www.jenitennison.com/xslt/xspec" />
+	<p:namespace-rename from="http://xylarium.org/ns/xml/ixspec" to="http://www.jenitennison.com/xslt/xspec" />
 	<p:add-attribute match="/*" attribute-name="stylesheet" attribute-value="http://xylarium.org/ns/xslt/utils/identity.xsl" />
 	
 	<u:save-debug-snapshot debug="{$debug}" href="{concat($debug-base-path, '/', $test-file-name, '.old_scenarios.xspec')}" />
