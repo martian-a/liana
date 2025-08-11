@@ -3,7 +3,7 @@
 	
 	<group id="grammmars">
 		
-		<uri name="http://xylarium.org/ns/ixml/grammar/xml-document-type-declaration.ixml"
+		<uri name="http://xylarium.org/ns/ixml/grammars/xml-document-type-declaration.ixml"
 			uri="xml_document_type_declaration.ixml" />
 		
 	</group>

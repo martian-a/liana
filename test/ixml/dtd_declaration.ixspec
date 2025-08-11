@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x:description xmlns:x="http://xylarium.org/ns/xspec/utils/ixspec" grammar="http://xylarium.org/ns/ixml/grammars/xml-document-type-declaration.ixml">
 
-	<x:helper stylesheet="http://xylarium.org/ns/xml/util/strip-space.xsl" />
+	<x:helper stylesheet="http://xylarium.org/ns/xslt/utils/strip-space.xsl" />
 		
 	<x:scenario label="Functional tests for document type declaration iXML">
 		

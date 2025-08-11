@@ -3,10 +3,10 @@
 	
 	<group id="xslt">
 		
-		<uri name="http://xylarium.org/ns/xml/util/identity.xsl"
+		<uri name="http://xylarium.org/ns/xslt/utils/identity.xsl"
 			uri="identity.xsl" />
 		
-		<uri name="http://xylarium.org/ns/xml/util/strip-space.xsl"
+		<uri name="http://xylarium.org/ns/xslt/utils/strip-space.xsl"
 			uri="strip_space.xsl" />
 		
 	</group>
