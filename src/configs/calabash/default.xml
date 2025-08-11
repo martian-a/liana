@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cc:xml-calabash 
+	xmlns:cc="https://xmlcalabash.com/ns/configuration"
+	version = "1.0">
+	
+	<!-- Extensions is a space-separated list 
+		 of filename extensions to associate 
+		 with the content type.
+		 Don't include the full-stop.
+	-->
+	<cc:mimetype content-type="application/xml" extensions="xspec ixspec" />
+	<cc:mimetype content-type="text/plain" extensions="txt ixml" />
+</cc:xml-calabash>

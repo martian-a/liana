@@ -1,0 +1,39 @@
+<!-- This is just a demo on how to do it -->
+<morgana-config xmlns="http://www.xml-project.com/morganaxproc">
+	<!-- Relative paths are resolved by uri of this file -->
+	
+	
+	<XSLTValidationMode>STRICT</XSLTValidationMode>
+	<xslt-connector>Saxon12-3</xslt-connector>	
+
+	<ixml-connector>com.xml_project.morganaxproc3.ninemlConnector.NineMLConnector</ixml-connector>	
+	
+	<!--
+	<xslt-connector>Saxon10</xslt-connector>
+	<xquery-connector>Saxon10</xquery-connector>
+	<xslt-config>saxon-config.xml</xslt-config>
+
+
+	<schematron-connector>SchXSLT</schematron-connector>
+	<path_to_iso_skeleton_schematron_1>ISO_SKELETON_SCHEMATRON_1</path_to_iso_skeleton_schematron_1>
+	<path_to_iso_skeleton_schematron_2>../../../lib/schematron/code</path_to_iso_skeleton_schematron_2>
+	<path_to_SchXSLT_1>../../../lib/sch-xslt/1.4.5/src/main/resources/xslt/1.0</path_to_SchXSLT_1>
+	<path_to_SchXSLT_2>../../../lib/sch-xslt/1.4.5/src/main/resources/xslt/2.0</path_to_SchXSLT_2>		
+	
+	
+	<fo-connector>com.xml_project.morganaxproc3.fop2x.ApacheFOP2xConnector</fo-connector>
+	<fo-connector>com.xml_project.fosupport.AHFormatterV65.AHF65Connector</fo-connector>
+	
+	<ixml-connector>com.xml_project.morganaxproc3.ninemlConnector.NineMLConnector</ixml-connector>
+	<ixml-connector>com.xml_project.morganaxproc3.markupblitzConnector.MarkupBlitzConnector</ixml-connector>
+	<ixml-connector>com.xml_project.morganaxproc3.markupblitzConnector.MarkupBlitzConnector</ixml-connector>
+	-->
+	
+	<mediatype-mapping>
+		<map file-extension="xspec" media-type="application/xml" />
+		<map file-extension="ixspec" media-type="application/xml" />
+		<map file-extension="txt" media-type="text/plain" />
+		<map file-extension="ixml" media-type="text/plain" />
+	</mediatype-mapping>
+	
+</morgana-config>
