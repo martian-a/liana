@@ -8,6 +8,7 @@ debug/
 logs/
 tmp/
 reports/
+output/
 
 # Local settings
 local.*.xml

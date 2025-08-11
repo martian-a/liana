@@ -1,77 +1,155 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project
-    basedir="."
-    xmlns:if="ant:if"
-    xmlns:unless="ant:unless"    
-    xmlns:ixspec="http://xylarium.org/ns/liana/ant/macros/ixspec"
-    xmlns:xspec="http://xylarium.org/ns/cherry/ant/macros/xspec"    
-    name="ixspec-test-runner"
-    default="test">
-    
-    
-    <!-- #########################
-         
-         iXSpec - a test runner for iXML
-         
-         To list the targets in this build file:
-         
-         $> ant -p
-         
-         ########################## -->
-
-
-	<!-- Properties -->	
-	<dirname property="ixspec.root-dir" file="${ant.file.ixspec-test-runner}/../" />	
-	<xmlproperty
-		file="${basedir}/local.properties.xml"
-		keeproot="false"
-		collapseattributes="true"
-		semanticattributes="true" />	
-	<xmlproperty
-		file="${ixspec.root-dir}/src/ant/project.properties.xml"
-		keeproot="false"
-		collapseattributes="true"
-		semanticattributes="true" />	
-	<xmlproperty
-		file="${basedir}/local.args.xml"
-		keeproot="true"
-		collapseattributes="true"
-		semanticattributes="true" />
+	xmlns:if="ant:if"
+	xmlns:unless="ant:unless"
+	xmlns:liana="http://xylarium.org/ns/ant/macros/utils/ixspec"
+	basedir="."
+	name="liana"
+	default="ixspec-to-xspec">
 	
-    
-	<!-- Import ant-contrib and macro-defs -->
-	<taskdef resource="net/sf/antcontrib/antlib.xml">
-		<classpath>
-			<pathelement location="${ant.lib.contrib}" />
-		</classpath>
-	</taskdef>	
-	<taskdef file="${ixspec.root-dir}/src/ant/ixspec.xml" uri="http://xylarium.org/ns/liana/ant/macros/ixspec" />
-	<taskdef file="${ant.lib.cherry}/ant/xspec.xml" uri="http://xylarium.org/ns/cherry/ant/macros/xspec" />
-	
-	
-	
-	<import file="${ant.lib.cherry}/ant/default_targets.xml" as="default" />
-	
-			
-	<target
-		name="test"
-		depends="setup">
 		
-		<echo message="${args.input}" />
+	<target name="init-properties">	
 		
-		<ixspec:run
-			source="${args.input}"
-			output-dir="${base.reports}"
-			tmp-dir="${base.tmp}"
-			fail-on-error="true"
-		/>
+		<dirname property="liana.build-file.dir" file="${ant.file}" />
+		
+		<!-- Load properties specific to this project (required) -->		
+		<property file="${liana.build-file.dir}/project.properties" />	
+		
+		<!-- Load properties specific to a user or environment (required) -->		
+		<property file="${liana.build-file.dir}/local.properties" />
+		
+		<property name="liana.tmp-dir" location="${liana.build-file.dir}/tmp" />
+		<property name="liana.output-dir" location="${liana.build-file.dir}/output" />
+		
+		<propertyset id="liana-properties">
+			<propertyref prefix="liana." />
+		</propertyset>
+		
+	</target>
+		
+
+	<target name="init-tasks" description="Import library dependencies" depends="init-properties">
+		
+		<!-- Import ant-contrib library -->
+		<taskdef resource="net/sf/antcontrib/antlib.xml">
+			<classpath>
+				<pathelement location="${liana.lib.ant-contrib.jar}" />
+			</classpath>
+		</taskdef>	
+		
+		<taskdef file="${liana.build-file.dir}/lib.xml" uri="http://xylarium.org/ns/ant/macros/utils/ixspec" />		
 		
 	</target>
 	
 	
-	<target
-		name="setup"
-		depends="default.clean, default.init, default.check-dependencies, default.setup" />
+	<target name="check-xproc-processor" depends="init-properties, init-tasks, clean">
+		
+		<if>
+			<equals arg1="morgana" arg2="${liana.xproc-processor}" />
+			<then>
+				<property name="liana.xproc-processor.morgana" value="true" />
+			</then>
+			<elseif>
+				<equals arg1="calabash" arg2="${liana.xproc-processor}" />
+				<then>
+					<property name="liana.xproc-processor.calabash" value="true" />
+				</then>
+			</elseif>
+			<else>
+				<exit message="$${liana.xproc-processor} must be set to either 'morgana' or 'calabash'" />
+			</else>
+		</if>
+		
+	</target>
+	
+	
+	<target name="init-classpath-morgana" depends="check-xproc-processor" if="liana.xproc-processor.morgana">	
 
+		<echo message="Setting classpath for Morgana" />
+
+		<path id="liana.classpath.morgana">
+			<!-- pathelement location="${java.class.path}" /-->     
+			<fileset dir="${liana.lib.xproc-processor.morgana.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+			<pathelement location="${liana.lib.xproc-processor.morgana.jar}" />
+			<!-- Saxon needs to be after Morgana because of an XML resolver clash,
+				 see https://sourceforge.net/p/morganaxproc-iiise/tickets/192/ -->
+			<pathelement location="${liana.lib.xslt-processor.saxon.jar}" />
+			<fileset dir="${liana.lib.xslt-processor.saxon.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+			<!-- Saxon needs to be before any other tools or libraries that also
+				 include a saxon jar as Morgana will use the first saxon jar found
+				 on the classpath. -->
+			<fileset dir="${liana.lib.ixml-processor.nine-ml.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+			<pathelement location="${liana.lib.ixml-processor.nine-ml.jar}" />
+		</path>
+		
+		<property name="liana.classpath.morgana" refid="liana.classpath.morgana" />
+		
+	</target>
+	
+	
+	<target name="init-classpath-calabash" depends="check-xproc-processor" if="liana.xproc-processor.calabash">	
+		
+		<echo message="Setting classpath for Calabash" />
+		
+		<local name="local.path.calabash.dir" />
+		<dirname property="local.path.calabash.dir" file="${liana.lib.xproc-processor.calabash.jar}" />
+		
+		<path id="liana.classpath.calabash">
+			<!-- pathelement location="${java.class.path}" /-->   
+			<fileset dir="${liana.lib.xproc-processor.calabash.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+			<pathelement location="${liana.lib.xproc-processor.calabash.jar}" />   
+		</path>
+		
+		<property name="liana.classpath.calabash" refid="liana.classpath.calabash" />
+		
+	</target>
+		
+		
+	<target name="init-classpaths" depends="check-xproc-processor, init-classpath-morgana, init-classpath-calabash" />
+		
+		
+	<target name="ixspec-run" depends="init-properties, init-tasks, clean, init-classpaths">		
+		
+		<local name="local.ixspec.name" />
+		<local name="local.ixspec.xspec" />
+		<basename property="local.ixspec.name" file="${liana.ixspec}" suffix="ixspec" />
+		<property name="local.ixspec.xspec" location="${liana.output-dir}/${local.ixspec.name}.xspec" />
+		
+		<liana:ixspec-to-xspec
+			src="${liana.ixspec}"
+			result="${local.ixspec.xspec}"
+			xproc-processor="${liana.xproc-processor}"
+		/>
+		
+	</target>
+	
+		
+	<target name="ixspec-to-xspec" depends="init-properties, init-tasks, clean, init-classpaths">		
+				
+		<local name="local.ixspec.name" />
+		<local name="local.ixspec.xspec" />
+		<basename property="local.ixspec.name" file="${liana.ixspec}" suffix="ixspec" />
+		<property name="local.ixspec.xspec" location="${liana.output-dir}/${local.ixspec.name}.xspec" />
+		
+		<liana:ixspec-to-xspec
+			src="${liana.ixspec}"
+			result="${local.ixspec.xspec}"
+			xproc-processor="${liana.xproc-processor}"
+		/>
+								
+	</target>	
+
+
+	<target name="clean" depends="init-properties">
+		<delete dir="${liana.tmp-dir}" />	
+		<delete dir="${liana.output-dir}" />	
+	</target>	
 
 </project>
