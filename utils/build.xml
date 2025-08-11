@@ -4,7 +4,7 @@
 	xmlns:liana="http://xylarium.org/ns/ant/macros/utils/ixspec"
 	basedir="."
 	name="liana"
-	default="ixspec-to-xspec">
+	default="ixspec-run">
 	
 		
 	<target name="init-properties">	
@@ -122,7 +122,7 @@
 		<basename property="local.ixspec.name" file="${liana.ixspec}" suffix="ixspec" />
 		<property name="local.ixspec.xspec" location="${liana.output-dir}/${local.ixspec.name}.xspec" />
 		
-		<liana:ixspec-to-xspec
+		<liana:ixspec-run
 			src="${liana.ixspec}"
 			result="${local.ixspec.xspec}"
 			xproc-processor="${liana.xproc-processor}"

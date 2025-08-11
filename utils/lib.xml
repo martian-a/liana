@@ -109,4 +109,107 @@
     </macrodef>		
 	
     
+	<macrodef
+		name="ixspec-run"
+		description="Run an iXSpec test file and return the results."> 
+		
+		<attribute name="src" />
+		<attribute name="result" default="" />
+		<attribute name="xproc-processor" />
+		
+		<sequential>                                  
+			
+			<local name="local.step" />        
+			<local name="local.step.name" />
+			<local name="local.step.available" />
+			<property name="local.step" location="${liana.home}/src/xproc/ixspec.xpl" />        	
+			<basename property="local.step.name" file="${local.step}" suffix=".xpl" />				
+			<available property="local.step.available" file="${local.step}" />			
+			<fail message="$${local.step} not found: ${local.step}" unless:true="${local.step.available}" />
+			
+			<local name="local.result.dir" />
+			<dirname property="local.result.dir" file="@{result}"  />
+			
+			<echoproperties prefix="liana" if:true="${liana.debug}" />
+			<echoproperties prefix="local" if:true="${liana.debug}" />
+			<if>
+				<equals arg1="true" arg2="${liana.debug}" />
+				<then>
+					<echo>@src: @{src}</echo>
+					<echo>@result: @{result}</echo>
+					<echo>@xproc-processor: @{xproc-processor}</echo>
+				</then>
+			</if>
+			
+			<mkdir dir="${local.result.dir}" />
+			
+			<echo message="${line.separator}***${line.separator}Running ${local.step.name} with @{xproc-processor}${line.separator}***" />
+			
+			<if>
+				<equals arg1="calabash" arg2="@{xproc-processor}" />
+				<then>
+					
+					<java classname="com.xmlcalabash.app.Main" failonerror="true">					
+						<classpath refid="liana.classpath.calabash" />		        		        		
+						
+						<!-- Config -->
+						<arg value="--configuration:${liana.lib.xproc-processor.calabash.config}" if:set="liana.lib.xproc-processor.calabash.config" />	            			
+						
+						<!-- Ports -->
+						<arg value="--input:text/plain@source=@{src}" />
+						<arg value="--output:result=@{result}" unless:blank="@{result}" />
+						
+						<!-- Processor Switches -->
+						<arg value="--explain" if:true="${liana.debug}" />
+						<arg value="--debug" if:true="${liana.debug}" />            			
+						<arg value="--catalog:${liana.lib.catalogs.default}" />
+						
+						<!-- Pipeline -->
+						<arg value="${local.step}" />      	
+						
+						<!-- Pipeline Options -->
+   
+						
+					</java>	
+					
+				</then>
+				<elseif>
+					<equals arg1="morgana" arg2="@{xproc-processor}" />
+					<then>
+						
+						<java classname="com.xml_project.morganaxproc3.XProcEngine" failonerror="true">					
+							<classpath refid="liana.classpath.morgana" />		        		        		
+							
+							<!-- Config -->
+							<arg value="-config=${liana.lib.xproc-processor.morgana.config}" if:set="liana.lib.xproc-processor.morgana.config" />		
+							
+							<!-- Pipeline -->
+							<arg value="${local.step}" />   
+							
+							<!-- Pipeline Options -->
+							<arg value="-option:debug=${liana.debug}" />  
+							<arg value="-option:debug-base-dir=${liana.tmp-dir}" />
+							
+							<!-- Processor Switches -->
+							<arg value="-cp" />
+							<arg value="-catalogs=${liana.lib.catalogs.default}" />
+							
+							<!-- Inputs and outputs -->
+							<arg value="-input:source=@{src}" />
+							<arg value="-output:result=@{result}" />
+							
+						</java>	
+						
+					</then>
+				</elseif>
+				<else>
+					<fail message="Unrecognised or unsupported XProc processor: @{xproc-processor" />
+				</else>
+			</if>
+			
+			
+		</sequential>		
+	</macrodef>		
+    
+    
 </antlib>
