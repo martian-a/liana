@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:declare-step
     xmlns:c="http://www.w3.org/ns/xproc-step"
+    xmlns:ix="http://xylarium.org/ns/xml/ixspec"
+    xmlns:ixp="http://xylarium.org/ns/xproc/steps/ixspec"   
     xmlns:p="http://www.w3.org/ns/xproc"      
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:x="http://www.jenitennison.com/xslt/xspec"
-    xmlns:ix="http://xylarium.org/ns/xml/ixspec"
-    xmlns:xym="http://xylarium.org/ns/xproc/steps/ixspec"    
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"     
     xmlns:u="http://xylarium.org/ns/xproc/steps/utils"   
+    exclude-inline-prefixes="#all"
     name="ixspec2xspec"
-    type="xym:ixspec2xspec"
+    type="ixp:ixspec2xspec"
     version="3.0">
     
     <p:documentation>

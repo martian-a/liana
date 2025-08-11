@@ -2,16 +2,16 @@
 <p:library
     xmlns:c="http://www.w3.org/ns/xproc-step"
     xmlns:ix="http://xylarium.org/ns/xml/ixspec"
+    xmlns:ixp="http://xylarium.org/ns/xproc/steps/ixspec"   
     xmlns:m="http://xylarium.org/ns/xml/documentation"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:p="http://www.w3.org/ns/xproc"      
     xmlns:pkg="http://expath.org/ns/pkg"
     xmlns:x="http://www.jenitennison.com/xslt/xspec"   
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xym="http://xylarium.org/ns/xproc/steps/ixspec"    
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"    
     pkg:import-uri="#none"
-    exclude-inline-prefixes="c ix map p pkg x xs xsl xym"
+    exclude-inline-prefixes="#all"
     version="3.1">
     
     <p:documentation>
