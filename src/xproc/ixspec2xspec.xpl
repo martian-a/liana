@@ -21,7 +21,7 @@
     <p:input port="source" sequence="false" primary="true" content-types="xml" />
 		
     <p:output port="result" sequence="true">
-    	<p:pipe port="result" step="update-expect-href" />
+    	<p:pipe port="result" step="delete-grammar-ref" />
     </p:output>
 	
 	<p:option name="tmp-dir" select="'../tmp/'" as="xs:anyURI" />
@@ -62,12 +62,12 @@
 		<p:sink />
 		
 		
-		<p:ixml>
+		<p:invisible-xml>
 			<p:with-input port="source">
 				<p:document href="{$original-context-href}" />
 			</p:with-input>
 			<p:with-input port="grammar" pipe="result@grammar" />
-		</p:ixml>
+		</p:invisible-xml>
 		
 		<p:store name="new-context">
 			<p:with-option name="href" select="concat($scenario-tmp-base-path, '.ixml-output.xml')" />
@@ -107,6 +107,8 @@
 		</p:xslt>
 		
 	</p:viewport>
+	
+	<p:delete match="/*/@grammar" name="delete-grammar-ref" />
                    
     <p:sink />   
 	
