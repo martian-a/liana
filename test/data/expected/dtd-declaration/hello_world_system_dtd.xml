@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document-type-declaration>
+	<root-element>greeting</root-element>
+	<external-definition>
+		<system-identifier>hello_world.dtd</system-identifier>
+	</external-definition>
+</document-type-declaration>

@@ -3,10 +3,10 @@
 
 	<x:helper stylesheet="http://xylarium.org/ns/xslt/utils/strip-space.xsl" />
 		
-	<x:scenario label="Functional tests for document type declaration iXML">
+	<x:scenario label="Functional tests for document type declaration iXML (only supports external DTD definition)">
 		
-		<x:scenario label="External definition">
-			
+		<x:scenario label="DTD Declaration string only (no need to isolate from rest of file)">												
+							
 			<x:scenario label="System">
 				
 				<x:context href="../data/input/text/xhtml_system_path.txt" />
@@ -40,8 +40,47 @@
 				</x:scenario>
 				
 			</x:scenario>
+				
 			
 		</x:scenario>
+		
+		<x:scenario label="Embedded in an XML file">
+			
+			<x:scenario label="System">
+				
+				<x:context href="../data/input/xml/hello_world_system_dtd.xml" />
+				
+				<x:expect href="../data/expected/dtd-declaration/hello_world_system_dtd.xml"
+					label="External definition with system identifier but no public identifier."
+					select="/*" />			
+				
+			</x:scenario>
+			
+			<x:scenario label="Public">
+				
+				<x:scenario label="Relative path">
+					
+					<x:context href="../data/input/xml/hello_world_public_dtd_path.xhtml" />
+					
+					<x:expect href="../data/expected/dtd-declaration/xhtml_public_path.xml"
+						label="External definition with system identifier and public identifier."
+						select="/*" />			
+					
+				</x:scenario>
+				
+				<x:scenario label="HTTP URL">
+					
+					<x:context href="../data/input/xml/hello_world_public_dtd_url.xhtml" />
+					
+					<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+						label="External definition with system identifier and public identifier."
+						select="/*" />			
+					
+				</x:scenario>
+				
+			</x:scenario>
+			
+		</x:scenario>		
 		
 	</x:scenario>
 	
