@@ -5,18 +5,23 @@ Description: An iXML Grammar for an XML Document Type Declaration, based on http
 Author: Sheila Ellen Thomson
 Created:  2024-09-26
 
-Note: (2024-09-26) Only works for external DTD definitions.
+Note: (2024-09-26) Only works for external DTD definitions and for a single line string containing just the DTD Declaration.
+Note: (2025-08-07) A variety of changes arising from a post-talk collaborative coding session at Balisage#:
+                   Single string for DOCYTYPE, SYSTEM and PUBLIC; Ignoring content before/after substring of interest.
+                   Contributors: John Lumley, Steven Pemberton, et al.
 } 
 
-       document-type-declaration : document-type-declaration-start, space-character, root-element, external-definition?, space-character?, document-type-declaration-end, whitespace-character*.
+       document-type-declaration : unwanted-content, document-type-declaration-start, space-character, root-element, external-definition?, space-character?, document-type-declaration-end, unwanted-content .
 
--document-type-declaration-start : -"<", -"!", -"D", -"O", -"C", -"T", -"Y", -"P", -"E".
-  -document-type-declaration-end : -">".
+                -unwanted-content: -~[]* .
+
+-document-type-declaration-start : -"<!DOCTYPE".
+  -document-type-declaration-end : -">" .
                     root-element : xml-name.
-             external-definition : space-character, (external-identifier-system | external-identifier-public ). 
+             external-definition : space-character, (external-identifier-system | external-identifier-public ) . 
 
-     -external-identifier-system : -"S", -"Y", -"S", -"T", -"E", -"M", space-character, system-identifier.
-     -external-identifier-public : -"P", -"U", -"B", -"L", -"I", -"C", space-character, public-identifier, space-character, system-identifier.
+     -external-identifier-system : -"SYSTEM", space-character, system-identifier.
+     -external-identifier-public : -"PUBLIC", space-character, public-identifier, space-character, system-identifier.
 
                system-identifier : ( -'"', ~['"']*, -'"') | ( -"'", ~["'"]*, -"'").
                public-identifier : ( -'"', public-id-character*, -'"' ) | ( -"'", public-id-character-except-single-quotemark*, -"'").
