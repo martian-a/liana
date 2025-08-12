@@ -62,11 +62,9 @@
 		
 		<p:sink />
 		
+		<p:load href="{$original-context-href}" content-type="text/plain" />
 		
 		<p:invisible-xml>
-			<p:with-input port="source">
-				<p:document href="{$original-context-href}" />
-			</p:with-input>
 			<p:with-input port="grammar" pipe="result@grammar" />
 		</p:invisible-xml>
 		
