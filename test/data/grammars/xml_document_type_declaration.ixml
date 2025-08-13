@@ -9,9 +9,12 @@ Note: (2024-09-26) Only works for external DTD definitions and for a single line
 Note: (2025-08-07) A variety of changes arising from a post-talk collaborative coding session at Balisage#:
                    Single string for DOCYTYPE, SYSTEM and PUBLIC; Ignoring content before/after substring of interest.
                    Contributors: John Lumley, Steven Pemberton, et al.
+Note: (2025-08-13) Refactored so unwanted content is outside the definition for the DOCTYPE declaration.
+Note: (2025-08-13) Won't work for a commented-out DOCTYPE declaration if the closing angle bracket is included within the comment.                  
 } 
 
-       document-type-declaration : unwanted-content, document-type-declaration-start, space-character, root-element, external-definition?, space-character?, document-type-declaration-end, unwanted-content .
+                       -document : unwanted-content, document-type-declaration, unwanted-content .
+       document-type-declaration : document-type-declaration-start, space-character, root-element, external-definition?, space-character?, document-type-declaration-end .
 
                 -unwanted-content: -~[]* .
 
