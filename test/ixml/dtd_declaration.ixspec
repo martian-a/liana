@@ -80,6 +80,218 @@
 				
 			</x:scenario>
 			
+			<x:scenario label="More complex content before DOCTYPE declaration">
+				
+				<x:scenario label="Comments">
+					
+					<x:scenario label="just one">
+						
+						<x:context href="../data/input/xml/content-to-ignore/before-doctype-decl/indented/comment.xhtml" />
+						
+						<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+							label="External definition with system identifier and public identifier."
+							select="/*" />			
+						
+					</x:scenario>
+					
+					<x:scenario label="multiple">
+						
+						<x:context href="../data/input/xml/content-to-ignore/before-doctype-decl/indented/multiple_comments.xhtml" />
+						
+						<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+							label="External definition with system identifier and public identifier."
+							select="/*" />			
+						
+					</x:scenario>	
+					
+				</x:scenario>
+				
+				<x:scenario label="PIs">
+					
+					<x:scenario label="just one">
+						
+						<x:context href="../data/input/xml/content-to-ignore/before-doctype-decl/indented/xml_declaration.xhtml" />
+						
+						<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+							label="External definition with system identifier and public identifier."
+							select="/*" />			
+						
+					</x:scenario>
+					
+					<x:scenario label="multiple">
+						
+						<x:context href="../data/input/xml/content-to-ignore/before-doctype-decl/indented/multiple_processing_instructions.xhtml" />
+						
+						<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+							label="External definition with system identifier and public identifier."
+							select="/*" />			
+						
+					</x:scenario>	
+					
+				</x:scenario>
+				
+				<x:scenario label="Comments and processing instructions">
+					
+					<x:context href="../data/input/xml/content-to-ignore/before-doctype-decl/indented/mixed.xhtml" />
+					
+					<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+						label="External definition with system identifier and public identifier."
+						select="/*" />			
+					
+				</x:scenario>
+				
+				<x:scenario label="Comments and processing instructions">
+					
+					<x:context href="../data/input/xml/content-to-ignore/before-doctype-decl/not-indented/mixed.xhtml" />
+					
+					<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+						label="External definition with system identifier and public identifier."
+						select="/*" />			
+					
+				</x:scenario>
+				
+			</x:scenario>
+			
+			<x:scenario label="More complex content after DOCTYPE declaration">
+				
+				<x:scenario label="XML">
+					
+					<x:context href="../data/input/xml/content-to-ignore/after-doctype-decl/indented/xml.xhtml" />
+					
+					<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+						label="External definition with system identifier and public identifier."
+						select="/*" />			
+					
+				</x:scenario>
+				
+				<x:scenario label="Comments">
+					
+					<x:scenario label="just one">
+						
+						<x:context href="../data/input/xml/content-to-ignore/after-doctype-decl/indented/comment.xhtml" />
+						
+						<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+							label="External definition with system identifier and public identifier."
+							select="/*" />			
+						
+					</x:scenario>
+					
+					<x:scenario label="multiple">
+						
+						<x:context href="../data/input/xml/content-to-ignore/after-doctype-decl/indented/multiple_comments.xhtml" />
+						
+						<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+							label="External definition with system identifier and public identifier."
+							select="/*" />			
+						
+					</x:scenario>	
+					
+				</x:scenario>
+				
+				<x:scenario label="PIs">
+					
+					<x:scenario label="just one">
+						
+						<x:context href="../data/input/xml/content-to-ignore/after-doctype-decl/indented/processing_instruction.xhtml" />
+						
+						<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+							label="External definition with system identifier and public identifier."
+							select="/*" />			
+						
+					</x:scenario>
+					
+					<x:scenario label="multiple">
+						
+						<x:context href="../data/input/xml/content-to-ignore/after-doctype-decl/indented/multiple_processing_instructions.xhtml" />
+						
+						<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+							label="External definition with system identifier and public identifier."
+							select="/*" />			
+						
+					</x:scenario>	
+					
+				</x:scenario>
+				
+				<x:scenario label="Comments and processing instructions">
+					
+					<x:context href="../data/input/xml/content-to-ignore/after-doctype-decl/indented/mixed.xhtml" />
+					
+					<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+						label="External definition with system identifier and public identifier."
+						select="/*" />			
+					
+				</x:scenario>
+				
+				<x:scenario label="Comments and processing instructions">
+					
+					<x:context href="../data/input/xml/content-to-ignore/after-doctype-decl/not-indented/mixed.xhtml" />
+					
+					<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+						label="External definition with system identifier and public identifier."
+						select="/*" />			
+					
+				</x:scenario>
+				
+			</x:scenario>
+			
+			<x:scenario label="More complex content before and after DOCTYPE declaration">
+				
+				<x:scenario label="Comments and processing instructions">
+					
+					<x:context href="../data/input/xml/content-to-ignore/before_and_after_indented.xhtml" />
+					
+					<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+						label="External definition with system identifier and public identifier."
+						select="/*" />			
+					
+				</x:scenario>
+				
+				<x:scenario label="Comments and processing instructions">
+					
+					<x:context href="../data/input/xml/content-to-ignore/before_and_after_not_indented.xhtml" />
+					
+					<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+						label="External definition with system identifier and public identifier."
+						select="/*" />			
+					
+				</x:scenario>
+				
+			</x:scenario>
+			
+			<x:scenario label="Commented out DOCTYPE declaration">
+				
+				<x:scenario label="Before active DOCTYPE declaration">
+					
+					<x:context href="../data/input/xml/content-to-ignore/before-doctype-decl/indented/commented_out_doctype_decl.xhtml" />
+					
+					<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+						label="External definition with system identifier and public identifier."
+						select="/*" />			
+					
+				</x:scenario>
+				
+				<x:scenario label="After active DOCTYPE declaration">
+					
+					<x:context href="../data/input/xml/content-to-ignore/after-doctype-decl/indented/commented_out_doctype_decl.xhtml" />
+					
+					<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+						label="External definition with system identifier and public identifier."
+						select="/*" />			
+					
+				</x:scenario>
+				
+				<x:scenario label="Before and after active DOCTYPE declaration">
+					
+					<x:context href="../data/input/xml/content-to-ignore/commented_out_doctype_decl_before_and_after.xhtml" />
+					
+					<x:expect href="../data/expected/dtd-declaration/xhtml_public_url.xml"
+						label="External definition with system identifier and public identifier."
+						select="/*" />			
+					
+				</x:scenario>
+				
+			</x:scenario>
+			
 		</x:scenario>		
 		
 	</x:scenario>
