@@ -45,7 +45,7 @@
 
 
 	<p:viewport name="update-context-href"
-		match="/x:description/descendant-or-self::x:scenario[x:context/@href]">
+		match="/x:description/descendant-or-self::x:scenario[x:context/@href][not(@pending)]">
 		
 		<p:output port="result" sequence="true">
 			<p:pipe step="updated-context" port="result" />
@@ -90,7 +90,7 @@
 	
 	
 	<p:viewport name="update-expect-href"
-		match="/x:description/descendant-or-self::x:scenario[x:expect/@href]">
+		match="/x:description/descendant-or-self::x:scenario[x:expect/@href][not(@pending)]">
 		
 		<p:output port="result" sequence="true" />
 		
