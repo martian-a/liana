@@ -120,7 +120,7 @@
 		<local name="local.ixspec.name" />
 		<local name="local.ixspec.xspec" />
 		<basename property="local.ixspec.name" file="${liana.ixspec}" suffix="ixspec" />
-		<property name="local.ixspec.xspec" location="${liana.output-dir}/${local.ixspec.name}.xspec" />
+		<property name="local.ixspec.xspec" location="${liana.output-dir}/${local.ixspec.name}.html" />
 		
 		<liana:ixspec-run
 			src="${liana.ixspec}"
