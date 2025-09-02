@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
 	
+	<group id="documentation">
+		
+		<nextCatalog catalog="myrtle/catalog.xml" />
+		
+	</group>
+	
+	
 	<group id="xspec">
 		
 		<uri name="http://www.jenitennison.com/xslt/xspec/xproc/lib"
