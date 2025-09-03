@@ -17,7 +17,7 @@ An (unofficial) extension to XSpec, for writing and running tests for Invisible 
 
 ## How to use <a id="how-to-use"></a>
 
-Once everything is [set-up](#set-up), you can run an iXSpec test file from the command-line, for example:
+Once all the [dependencies](#dependencies) are in place, you can run an iXSpec test file from the command-line, for example:
 
 _Morgana:_
 ```
@@ -45,7 +45,7 @@ If you use the example file (`test/ixml/dtd_declaration.ixspec`), it's expected 
 
 ### Notes
 
-If you're running the command on Windows, you will need to replace the colons in the classpath with semi-colons, eg. `path/to/MorganaXProc-IIIse.jar;path/to/MorganaXProc-IIIse_lib/*;path/to/saxon.jar;path/to/saxon/lib/*;path/to/coffeepot/lib/*;path/to/coffeepot.jar`
+If you're running the command on Microsoft Windows, you may need to replace the colons in the classpath with semi-colons, eg. `path/to/MorganaXProc-IIIse.jar;path/to/MorganaXProc-IIIse_lib/*;path/to/saxon.jar;path/to/saxon/lib/*;path/to/coffeepot/lib/*;path/to/coffeepot.jar`
 
 If you're using Morgana:
 * the second `-cp` in the command-line is an instruction to create any missing output directories, ie. `results`
