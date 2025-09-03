@@ -1,40 +1,24 @@
 # Debug flag
-mulch.debug=false
+liana.debug=false
 
-# XProc processor ID
-mulch.xproc-processor=calabash
-
-# mulchwood project root dir
-mulch.home=/home/hharrington/repositories/mulch
-
-# Source files
-mulch.gedcom-text=${mulch.home}/example.ged.txt
-
-# Testing root dir
-mulch.test.home=${mulch.home}/test
+# XProc processor ID (morgana|calabash)
+liana.xproc-processor=morgana
 
 # MorganaXProc III Standard Edition
-mulch.lib.xproc-processor.morgana.jar=/home/hharrington/tools/morgana-xproc/IIIse-1.6.10/MorganaXProc-IIIse.jar
-mulch.lib.xproc-processor.morgana.lib=/home/hharrington/tools/morgana-xproc/IIIse-1.6.10/MorganaXProc-IIIse_lib
-mulch.lib.xproc-processor.morgana.config=${mulch.home}/src/configs/morgana/xslt_3.xml
+liana.lib.xproc-processor.morgana.jar=/home/hharrington/morgana-xproc/IIIse-1.6.10/MorganaXProc-IIIse.jar
+liana.lib.xproc-processor.morgana.lib=/home/hharrington/morgana-xproc/IIIse-1.6.10/MorganaXProc-IIIse_lib
 
 # XML Calabash
-mulch.lib.xproc-processor.calabash.jar=/home/hharrington/tools/xml-calabash/3.0.4/xmlcalabash-app-3.0.4.jar
-mulch.lib.xproc-processor.calabash.lib=/home/hharrington/tools/xml-calabash/3.0.4/lib
+liana.lib.xproc-processor.calabash.jar=/home/hharrington/xml-calabash/3.0.10/xmlcalabash-app-3.0.10.jar
+liana.lib.xproc-processor.calabash.lib=/home/hharrington/xml-calabash/3.0.10/lib
 
 # Ant Contrib
-mulch.lib.ant-contrib.jar=/home/hharrington/tools/ant-contrib/1.0b3/ant-contrib-1.0b3.jar
-
-# Ant Unit
-mulch.lib.ant-unit.jar=/home/hharrington/tools/apache/ant/antunit/1.4.1/ant-antunit-1.4.1.jar
+liana.lib.ant-contrib.jar=/home/hharrington/ant-contrib/1.0b3/ant-contrib-1.0b3.jar
 
 # Saxon
-mulch.lib.xslt-processor.saxon.jar=/home/hharrington/tools/saxon/SaxonHE12-7J/saxon-he-12.7.jar
-mulch.lib.xslt-processor.saxon.lib=/home/hharrington/tools/saxon/SaxonHE12-7J/lib
-
+liana.lib.xslt-processor.saxon.jar=/home/hharrington/saxon/SaxonHE12-7J/saxon-he-12.7.jar
+liana.lib.xslt-processor.saxon.lib=/home/hharrington/saxon/SaxonHE12-7J/lib
 
 # NineML
-mulch.lib.ixml-processor.nine-ml.jar=/home/hharrington/tools/nine-ml/coffeepot-3.2.6/coffeepot-3.2.6.jar
-mulch.lib.ixml-processor.nine-ml.lib=/home/hharrington/tools/nine-ml/coffeepot-3.2.6//lib
-
-# mulch.lib.catalog-resolver.jar=/home/hharrington/tools/apache/xml-commons-resolver/1.2/resolver.jar
+liana.lib.ixml-processor.nine-ml.jar=/home/hharrington/nine-ml/coffeepot-3.2.6/coffeepot-3.2.6.jar
+liana.lib.ixml-processor.nine-ml.lib=/home/hharrington/nine-ml/coffeepot-3.2.6/lib
