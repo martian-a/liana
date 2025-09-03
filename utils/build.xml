@@ -16,10 +16,7 @@
 		
 		<!-- Load properties specific to a user or environment (required) -->		
 		<property file="${liana.build-file.dir}/local.properties" />
-		
-		<property name="liana.tmp-dir" location="${liana.build-file.dir}/tmp" />
-		<property name="liana.output-dir" location="${liana.build-file.dir}/output" />
-		
+				
 		<propertyset id="liana-properties">
 			<propertyref prefix="liana." />
 		</propertyset>
