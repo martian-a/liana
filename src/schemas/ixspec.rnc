@@ -18,7 +18,7 @@ description |=
 	}
 	
 description.attlist = (
-	attribute grammar { xsd:anyURI },
+	attribute ixml-grammar { xsd:anyURI },
 	
 	common-attributes,
 	attribute version { xsd:decimal }?,

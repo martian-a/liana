@@ -28,12 +28,18 @@
 				<m:change date="2025-08-14">
 					<m:desc>Refactored to for greater compatibility with XSpec's XProc 3 library.</m:desc>
 				</m:change>
+				<m:change date="2025-09-03">
+					<m:desc>Bugfix: can't change $parameters if it's static and can't use @use-when unless $parameters is static.  Also can't wrap variables in p:if unless that sub-pipeline also does something.</m:desc>
+				</m:change>
+				<m:change date="2025-09-03">
+					<m:desc>Changed /*:description/@grammar to /*:description/@ixml-grammar.</m:desc>
+				</m:change>
 			</m:history>
 		</m:document>
 	</p:documentation>
     
     
-	<p:import href="http://www.jenitennison.com/xslt/xspec/xproc/lib"/>
+	<p:import href="http://www.jenitennison.com/xslt/xspec/xproc/lib" />
 
 	<p:documentation>
 		<m:component>An iXSpec test file.</m:component>
@@ -64,7 +70,7 @@
 			<m:note>If <m:code>parameters</m:code> isn't set to an empty map by default then an error is thrown by <m:code>x:compile-xslt</m:code> in <m:code>harness-lib.xpl</m:code> when map:get() is used (because <m:code>map:get()</m:code> requires a map).</m:note>
 		</m:component>
 	</p:documentation>	
-	<p:option name="parameters" select="map{}" as="map(xs:QName,item()*)" static="true" />
+	<p:option name="parameters" select="map{}" as="map(xs:QName,item()*)" />
 	
 	<p:option name="tmp-dir" select="'../tmp/'" as="xs:anyURI" />
 	
@@ -79,10 +85,15 @@
 	<p:variable name="test-file-name" select="tokenize($test-file-base-uri, '/')[last()] ! string-join(tokenize(., '\.')[position() != last()], '.')" as="xs:string" />
 
 	<p:variable name="dynamic-parameters" select="$parameters" as="map(xs:QName,item()*)" />
-	<p:variable name="dynamic-parameters" select="map:put($dynamic-parameters, 'log-ixspec', concat($debug-base-path, '/', $test-file-name, '.ixspec'))" as="map(xs:QName,item()*)" use-when="($debug and map:get($parameters, xs:QName('log-ixspec') = ''))" />
-	<p:variable name="dynamic-parameters" select="map:put($dynamic-parameters, 'log-ixspec-pre-new-contexts', concat($debug-base-path, '/', $test-file-name, '.pre_new_contexts.xml'))" as="map(xs:QName,item()*)" use-when="($debug and map:get($parameters, xs:QName('log-ixspec') = ''))" />
-	<p:variable name="dynamic-parameters" select="map:put($dynamic-parameters, 'log-ixspec-new-contexts', concat($debug-base-path, '/', $test-file-name, '.new_contexts.xml'))" as="map(xs:QName,item()*)" use-when="($debug and map:get($parameters, xs:QName('log-ixspec') = ''))" />
-	<p:variable name="dynamic-parameters" select="map:put($dynamic-parameters, 'log-xspec', concat($debug-base-path, '/', $test-file-name, '.xspec'))" as="map(xs:QName,item()*)" use-when="($debug and map:get($parameters, xs:QName('log-xspec') = ''))" />
+	<p:variable name="dynamic-parameters" select="if ($debug and map:get($parameters, 'log-ixspec' = '')) then (
+			map:put($dynamic-parameters, 'log-ixspec', concat($debug-base-path, '/', $test-file-name, '.ixspec')),
+			map:put($dynamic-parameters, 'log-ixspec-pre-new-contexts', concat($debug-base-path, '/', $test-file-name, '.pre_new_contexts.xml')),
+			map:put($dynamic-parameters, 'log-ixspec-new-contexts', concat($debug-base-path, '/', $test-file-name, '.new_contexts.xml'))
+		) else $parameters" as="map(xs:QName,item()*)" />
+	<p:variable name="dynamic-parameters" select="if ($debug and map:get($parameters, 'log-xspec' = '')) then (
+			map:put($dynamic-parameters, 'log-xspec', concat($debug-base-path, '/', $test-file-name, '.xspec'))
+		) else $dynamic-parameters" />
+
 
 	<x:log if-set="log-ixspec">
 		<p:with-option name="parameters" select="$dynamic-parameters"/>         
@@ -162,7 +173,7 @@
 		
 	</p:viewport>
 	
-	<p:delete match="/*/@grammar" name="delete-grammar-ref" />
+	<p:delete match="/*/@ixml-grammar" name="delete-grammar-ref" />
 	
 	<x:log if-set="log-xspec">
 		<p:with-option name="parameters" select="$dynamic-parameters"/>         
@@ -175,7 +186,7 @@
 		<p:with-input port="source" pipe="source@ixspec2xspec" />
 	</p:identity>
 	
-	<p:variable name="grammar-href" select="xs:anyURI(/ix:description/@grammar)" as="xs:anyURI" />
+	<p:variable name="grammar-href" select="xs:anyURI(/ix:description/@ixml-grammar)" as="xs:anyURI" />
 	
 	<p:load name="grammar">
 		<p:with-option name="href" select="$grammar-href" />
