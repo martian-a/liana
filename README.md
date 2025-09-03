@@ -1,12 +1,13 @@
 # iXSpec Test Runner
 
-Status: In development (2024-10-04)
+Status: Version 1.0.0 released (2025-09-03)
 
 An (unofficial) extension to XSpec, for writing and running tests for Invisible XML (iXML).
-=======
+
 ## Table of contents
 1. [Summary](#summary)
-1. [Set-up](#set-up)
+1. [How to use](#how-to-use)
+1. [Create an iXSpec test file](#how-to-write)
 1. [Dependencies](#dependencies)
 1. [Etymology](#etymology)
 
@@ -14,101 +15,151 @@ An (unofficial) extension to XSpec, for writing and running tests for Invisible 
 
 An (unofficial) extension to XSpec, for writing and running tests for Invisible XML (iXML).
 
-## Set-up <a id="set-up"></a>
+## How to use <a id="how-to-use"></a>
 
-### Pre-requisites 
+Once everything is [set-up](#set-up), you can run an iXSpec test file from the command-line, for example:
 
-Check that you have each of the dependencies listed in the Dependencies section (below).
+_Morgana:_
+```
+java -cp path/to/MorganaXProc-IIIse.jar:path/to/MorganaXProc-IIIse_lib/*:path/to/saxon.jar:path/to/saxon/lib/*:path/to/coffeepot/lib/*:path/to/coffeepot.jar /
+	com.xml_project.morganaxproc3.XProcEngine /
+	-config=src/configs/morgana/default.xml /
+	src/xproc/ixspec.xpl -cp / 
+	-catalogs=catalog.xml /
+	-input:source=test/ixml/dtd_declaration.ixspec / 
+	-output:result=results/dtd_declaration.html
+```
 
-### Property files
+_Calabash:_
+```
+java -cp path/to/xmlcalabash-3/lib/*:path/to/xmlcalabash-3/xmlcalabash.jar /
+	com.xmlcalabash.app.Main / 
+	--configuration:src/configs/morgana/default.xml /
+	--input:text/plain@source=test/ixml/dtd_declaration.ixspec / 
+	--output:result=results/dtd_declaration.html /
+	--catalog:catalog.xml /
+	src/xproc/ixspec.xpl
+	
+```
+If you use the example file (`test/ixml/dtd_declaration.ixspec`), it's expected that **two tests will FAIL** but all the others will pass. 
 
-#### Local properties
+### Notes
 
-TODO
+If you're running the command on Windows, you will need to replace the colons in the classpath with semi-colons, eg. `path/to/MorganaXProc-IIIse.jar;path/to/MorganaXProc-IIIse_lib/*;path/to/saxon.jar;path/to/saxon/lib/*;path/to/coffeepot/lib/*;path/to/coffeepot.jar`
 
-#### Run-time arguments
+If you're using Morgana:
+* the second `-cp` in the command-line is an instruction to create any missing output directories, ie. `results`
+* Saxon needs to be after Morgana in the classpath because of an XML resolver clash, see [https://sourceforge.net/p/morganaxproc-iiise/tickets/192/]()
+* Saxon needs to be before any other tools or libraries on the classpath (other than Morgana itself) that also include a saxon jar as Morgana will use the first saxon jar it finds
 
-TODO
+## Create an iXSpec test file <a id="how-to-write"></a>
+
+For an example of an iXSpec test file, see `test/ixml/dtd_declaration.ixspec`.
+
+When writing your own, you need to be aware of 3 main differences to writing an XSpec for XSLT test file:
+* use @ixml-grammar instead of @stylesheet
+* the context for each test needs to be loaded from an external file
+* the namespace is different
+
+### How to specify which Invisible XML grammar to test
+
+Populate this attribute with a path to the Invisible XML grammar you wish to test, eg. `ixml-grammar="path/to/my_grammar.ixml"`
+
+### How to specify the string to be parsed
+
+1. Save the string in a file
+1. Specify the path to that file using x:scenario/x:context/@href
+
+Example:
+```
+<x:scenario label="System">
+	
+	<x:context href="../data/input/text/xhtml_system_path.txt" />
+	
+	...		
+	
+</x:scenario>
+```
+
+### Why is the namespace different
+
+* To make it harder to confuse an iXSpec file for a standard XSpec test file.
+* Not all XSpec functionality is relevant to iXSpec
+
+#### Can I still validate an iXSpec file?
+
+Yes. The schema for iXSpec is in `src/schemas/ixspec.rnc`.
+
+### How do I write the tests?
+
+Other than the differences detailed above, an iXSpec test is written the same way as a standard XSpec for XSLT test file.  See [https://github.com/xspec/xspec/wiki/Writing-Scenarios]()
 
 
 ## Dependencies <a id="dependencies"></a>
 
-You will need to give this ANT script access to some resources that aren't included in this repository:  
-
 * XSpec
-* Java
-* Apache ANT
-* ANT Contrib
-* Saxon
-* MorganaXProc III
-* XML Resolver
+* XProc and XSLT processors:
+	* MorganaXProc III and Saxon; or 
+	* XML Calabash 3 (includes Saxon)
+* CoffeePot (iXML processor)
+* An XML Resolver
 
 It's likely that you have some of them installed already.
 
 ### XSpec
 
-_Tested with ?_
+_Tested with v.3.3-SNAPSHOT_
 
-* Download: https://www.saxonica.com/download/java.xml
-* Documentation: https://www.saxonica.com/documentation10/documentation.xml
+XSpec is included in this repository as a GIT submodule. See `<repository_root>/lib/xspec` 
 
-TODO: Where to find in oXygen?  Can re-use.
+* Download: https://github.com/xspec/xspec/releases
+* Documentation: https://github.com/xspec/xspec/wiki
 
-### Java
+### XProc Processor
 
-_Tested with ?_
+#### MorganaXProc III
 
-* Download: https://www.saxonica.com/download/java.xml
-* Documentation: https://www.saxonica.com/documentation10/documentation.xml
-
-TODO: Where to find in oXygen?  Can re-use.
-
-### Apache ANT
-
-_Tested with ?_
-
-* Download: https://www.saxonica.com/download/java.xml
-* Documentation: https://www.saxonica.com/documentation10/documentation.xml
-
-TODO: Where to find in oXygen?  Can re-use.
-
-### ANT Contrib
-
-A library of tasks that extend Apache ANT.
-
-_Tested with ?_
-
-* Download: https://www.saxonica.com/download/java.xml
-* Documentation: https://www.saxonica.com/documentation10/documentation.xml
-
-TODO: Where to find in oXygen?  Can re-use.
-
-### Saxon
-
-_Tested with Home Edition v10_
-
-* Download: https://www.saxonica.com/download/java.xml
-* Documentation: https://www.saxonica.com/documentation10/documentation.xml
-
-TODO: Where to find in oXygen?  Can re-use.
-
-### MorganaXProc III
-
-_Tested with Standard Edition (SE) v1.2.1_
+_Tested with Standard Edition (SE) v1.6.10_
 
 * Download: https://sourceforge.net/projects/morganaxproc-iiise/
 * Documentation: https://www.xml-project.com/morganaxproc-iiise.html
 
+#### XML Calabash 3
+
+_Tested with v3.0.10_
+
+* Download: https://sourceforge.net/projects/morganaxproc-iiise/
+* Documentation: https://www.xml-project.com/morganaxproc-iiise.html
+
+### Saxon
+
+_Tested with Home Edition v12.3_
+
+You only need to install this separately if you're using Morgana because Saxon is already included in the library that ships with XML Calabash.
+
+* Download: https://www.saxonica.com/download/java.xml
+* Documentation: https://www.saxonica.com/documentation/documentation.xml
+
+### CoffeePot
+
+_Tested with v3.2.6_
+
+You only need to install this separately if you're using Morgana because CoffeePot is already included in the library that ships with XML Calabash.
+
+* Download: https://github.com/nineml/coffeepot/releases
+* Documentation: https://docs.nineml.org/current/coffeepot/
+
+
 ### XML Resolver
 
-_Tested with v1.2_
+_Tested with v6.0.17_
 
-* Download: https://dlcdn.apache.org//xerces/xml-commons/binaries/xml-commons-resolver-1.2.zip
-* Documentation: 
-    * https://xerces.apache.org/xml-commons/components/resolver/resolver-article.html#s.resolver.classes.12
-    * https://xerces.apache.org/xml-commons/components/resolver/
-    
-TODO: Where to find in oXygen?  Can re-use.
+You only need to install this separately if you're using Morgana because XML Resolver is already included in the library that ships with XML Calabash.
+
+* Download: https://github.com/xmlresolver/xmlresolver
+* Documentation: https://xmlresolver.org/
+
+You can use any XML catalog resolver, it doesn't need to be the one I've linked to.
 
 ## Etymology <a id="etymology"></a>
 
