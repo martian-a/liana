@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+	
+	<nextCatalog catalog="catalog.xml" />
+	
+	<group id="xspec">
+	
+		<delegateSystem systemIdStartString="http://www.jenitennison.com/xslt/xspec"
+			catalog="/path/to/xspec/catalog.xml" />
+		
+	</group>
+	
+	<group id="myrtle">
+		
+		<delegateSystem systemIdStartString="http://xylarium.org/ns/xml/documentation" 
+			catalog="/path/to/myrtle/catalog.xml" />		
+		
+	</group>
+	
+</catalog>

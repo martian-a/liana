@@ -6,6 +6,5 @@
 	
 	<nextCatalog catalog="test/data/grammars/catalog.xml" />
 	<nextCatalog catalog="src/catalog.xml" />
-	<nextCatalog catalog="lib/catalog.xml" />
 	
 </catalog>
