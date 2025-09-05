@@ -8,6 +8,7 @@ An (unofficial) extension to XSpec, for writing and running tests for Invisible 
 1. [Summary](#summary)
 1. [How to use](#how-to-use)
 1. [Create an iXSpec test file](#how-to-write)
+1. [Set-up](#set-up)
 1. [Dependencies](#dependencies)
 1. [Etymology](#etymology)
 
@@ -17,7 +18,7 @@ An (unofficial) extension to XSpec, for writing and running tests for Invisible 
 
 ## How to use <a id="how-to-use"></a>
 
-Once all the [dependencies](#dependencies) are in place, you can run an iXSpec test file from the command-line, for example:
+Once all [set-up](#set-up) is complete, you can run an iXSpec test file from the command-line, for example:
 
 _Morgana:_
 ```
@@ -94,17 +95,22 @@ Yes. The schema for iXSpec is in `src/schemas/ixspec.rnc`.
 
 Other than the differences detailed above, an iXSpec test is written the same way as a standard XSpec for XSLT test file.  See [https://github.com/xspec/xspec/wiki/Writing-Scenarios]()
 
+## Set-up <a id="set-up"></a>
+
+1. Clone this repository and its submodules: `git clone --recurse-submodules -j8 <repo-url>`
+1. Install any missing [dependencies](#dependencies)
 
 ## Dependencies <a id="dependencies"></a>
 
 * XSpec
-* XProc and XSLT processors:
-	* MorganaXProc III and Saxon; or 
-	* XML Calabash 3 (includes Saxon)
-* CoffeePot (iXML processor)
-* An XML Resolver
+* An XProc processor:
+	* MorganaXProc III 
+	* XML Calabash 3
+* Saxon _(already included in XML Calabash 3)_
+* CoffeePot _(already included in XML Calabash 3)_ 
+* An XML Resolver _(already included in XML Calabash 3)_
 
-It's likely that you have some of them installed already.
+It's likely that you have some of these installed already.
 
 ### XSpec
 
