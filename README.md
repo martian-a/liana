@@ -102,7 +102,7 @@ Other than the differences detailed above, an iXSpec test is written the same wa
 
 ## Dependencies <a id="dependencies"></a>
 
-* XSpec
+* XSpec (included in this repo as a git submodule)
 * An XProc processor:
 	* MorganaXProc III 
 	* XML Calabash 3
@@ -114,12 +114,14 @@ It's likely that you have some of these installed already.
 
 ### XSpec
 
-_Tested with v.3.3-SNAPSHOT_
+_Tested with the master branch as of 2025-09-05_
 
 XSpec is included in this repository as a GIT submodule. See `<repository_root>/lib/xspec` 
 
 * Download: https://github.com/xspec/xspec/releases
 * Documentation: https://github.com/xspec/xspec/wiki
+
+The XProc 3 implementation is new and hasn't yet been included in an official release.
 
 ### XProc Processor
 
