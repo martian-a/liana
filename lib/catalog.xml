@@ -10,14 +10,17 @@
 	
 	<group id="xspec">
 		
+		<uri name="http://www.jenitennison.com/xslt/xspec.rnc"
+			uri="xspec/src/schemas/xspec.rnc" />
+		
 		<uri name="http://www.jenitennison.com/xslt/xspec/xproc/lib"
 			uri="xspec/src/xproc3/harness-lib.xpl" />
 		
 		<uri name="http://www.jenitennison.com/xslt/xspec/xproc/steps/run-xslt"
-			uri="xspec/src/xproc3/saxon/saxon-xslt-harness.xproc" />
+			uri="xspec/src/xproc3/xslt-harness.xproc" />
 		
 		<uri name="http://www.jenitennison.com/xslt/xspec/xproc/steps/run-xquery"
-			uri="xspec/src/xproc3/saxon/saxon-xquery-harness.xproc" />
+			uri="xspec/src/xproc3/xquery-harness.xproc" />
 		
 		<uri name="http://www.jenitennison.com/xslt/xspec/compile-xslt-tests.xsl"
 			uri="xspec/src/compiler/compile-xslt-tests.xsl" />
