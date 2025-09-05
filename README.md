@@ -1,6 +1,6 @@
 # iXSpec Test Runner
 
-Status: Version 1.0.0 released (2025-09-03)
+Status: Version 1.1.0-alpha released (2025-09-05)
 
 An (unofficial) extension to XSpec, for writing and running tests for Invisible XML (iXML).
 
