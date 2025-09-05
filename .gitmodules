@@ -1,9 +1,6 @@
 [submodule "lib/xspec"]
 	path = lib/xspec
 	url = git@github.com:xspec/xspec.git
-[submodule "lib/ixml"]
-	path = lib/ixml
-	url = git@github.com:invisibleXML/ixml.git
 [submodule "lib/myrtle"]
 	path = lib/myrtle
 	url = git@github.com:martian-a/myrtle.git
