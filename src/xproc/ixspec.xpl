@@ -23,7 +23,12 @@
 			<m:contributors>
 				<m:original-author>Sheila Thomson</m:original-author>
 			</m:contributors>
-			<m:history created="2025-08-11" />
+			<m:history created="2025-08-11">
+				<m:change date="2025-09-04">
+					<m:desc>Updated to reflect changes to XProc 3 in XSpec project.</m:desc>
+					<m:related href="https://github.com/xspec/xspec/pull/2163">Pull request to move/rename XProc 3 harnesses</m:related>
+				</m:change>
+			</m:history>
 		</m:document>
 	</p:documentation>
 
@@ -95,9 +100,9 @@
 	<p:documentation>
 		<m:component>Run the XSpec file using the standard/official XSLT process.</m:component>
 	</p:documentation>
-	<x:saxon-xslt-harness name="run-xspec">
+	<x:xslt-harness name="run-xspec">
 		<p:with-option name="parameters" select="$parameters" />
-	</x:saxon-xslt-harness>
+	</x:xslt-harness>
 		
 
 </p:declare-step>
