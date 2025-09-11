@@ -145,8 +145,8 @@
 
 
 	<target name="clean" depends="init-properties">
-		<delete dir="${liana.tmp-dir}" />	
-		<delete dir="${liana.output-dir}" />	
+		<delete dir="${liana.tmp-dir}" if:true="${liana.tmp-dir.clean}" />	
+		<delete dir="${liana.output-dir}" if:true="${liana.output-dir.clean}" />
 	</target>	
 
 </project>
