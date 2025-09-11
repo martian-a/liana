@@ -3,7 +3,7 @@
     xmlns:if="ant:if"
     xmlns:unless="ant:unless"
     xmlns:local="http://xylarium.org/ns/ant/macros/utils/ixspec">
-	   
+    
     
     <macrodef
         name="ixspec-to-xspec"
@@ -24,7 +24,7 @@
         	<fail message="$${local.step} not found: ${local.step}" unless:true="${local.step.available}" />
         	
         	<local name="local.result.dir" />
-        	<dirname property="local.result.dir" file="@{result}"  />
+        	<dirname property="local.result.dir" file="@{result}"  />        	 
         	
         	<echoproperties prefix="liana" if:true="${liana.debug}" />
         	<echoproperties prefix="local" if:true="${liana.debug}" />
@@ -64,8 +64,7 @@
             			<arg value="${local.step}" />      	
             			
             			<!-- Pipeline Options -->
-            			<arg value="debug=${liana.debug}" />   
-
+            			<arg value="debug=${liana.debug}" />            			
             		</java>	
             		
             	</then>
@@ -84,7 +83,7 @@
             				
             				<!-- Pipeline Options -->
             				<arg value="-option:debug=${liana.debug}" />  
-            				<arg value="-option:debug-base-dir=${liana.tmp-dir}" />
+            				<arg value="-option:debug-base-dir=${liana.tmp-dir}" />            				            				
             				            				
             				<!-- Processor Switches -->
             				<arg value="-cp" />
@@ -168,8 +167,16 @@
 						<arg value="${local.step}" />      	
 						
 						<!-- Pipeline Options -->
-   
-						
+						<arg value="xspec-home=${liana.params.xspec-home}" if:set="liana.params.xspec-home" />
+						<arg value="compiler-uri=${liana.params.compiler-uri}" if:set="liana.params.compiler-uri" />
+						<arg value="compiler-options=${liana.params.compiler-options}" if:set="liana.params.compiler-options" />
+						<arg value="log-compiled=${liana.params.log-compiled}" if:set="liana.params.log-compiled" />
+						<arg value="formatter-uri=${liana.params.formatter-uri}" if:set="liana.params.formatter-uri" />
+						<arg value="formatter-options=${liana.params.formatter-options}" if:set="liana.params.formatter-options" />
+						<arg value="serialization-options=${liana.params.serialization-options}" if:set="liana.params.serialization-options" />
+						<arg value="log-xml-report=${liana.params.log-xml-report}" if:set="liana.params.log-xml-report" />
+						<arg value="log-report=${liana.params.log-report}" if:set="liana.params.log-report" />
+						<arg value="log-indented=${liana.params.log-indented}" if:set="liana.params.log-indented" />						
 					</java>	
 					
 				</then>
@@ -189,6 +196,16 @@
 							<!-- Pipeline Options -->
 							<arg value="-option:debug=${liana.debug}" />  
 							<arg value="-option:debug-base-dir=${liana.tmp-dir}" />
+							<arg value="-option:xspec-home=${liana.params.xspec-home}" if:set="liana.params.xspec-home" />
+							<arg value="-option:compiler-uri=${liana.params.compiler-uri}" if:set="liana.params.compiler-uri" />
+							<arg value="-option:compiler-options=${liana.params.compiler-options}" if:set="liana.params.compiler-options" />
+							<arg value="-option:log-compiled=${liana.params.log-compiled}" if:set="liana.params.log-compiled" />
+							<arg value="-option:formatter-uri=${liana.params.formatter-uri}" if:set="liana.params.formatter-uri" />
+							<arg value="-option:formatter-options=${liana.params.formatter-options}" if:set="liana.params.formatter-options" />
+							<arg value="-option:serialization-options=${liana.params.serialization-options}" if:set="liana.params.serialization-options" />
+							<arg value="-option:log-xml-report=${liana.params.log-xml-report}" if:set="liana.params.log-xml-report" />
+							<arg value="-option:log-report=${liana.params.log-report}" if:set="liana.params.log-report" />
+							<arg value="-option:log-indented=${liana.params.log-indented}" if:set="liana.params.log-indented" />						
 							
 							<!-- Processor Switches -->
 							<arg value="-cp" />

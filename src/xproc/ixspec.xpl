@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:declare-step
 	xmlns:c="http://www.w3.org/ns/xproc-step"
+	xmlns:fn="http://www.w3.org/2005/xpath-functions" 
 	xmlns:ix="http://xylarium.org/ns/xml/ixspec"
 	xmlns:ixp="http://xylarium.org/ns/xproc/steps/ixspec"    
 	xmlns:m="http://xylarium.org/ns/xml/documentation"
@@ -88,21 +89,83 @@
 			<m:note>If parameters isn't set to an empty map by default then an error is thrown by x:compile-xslt in harness-lib.xpl when map:get() is used (because map:get() requires a map).</m:note>
 		</m:component>
 	</p:documentation>	
-	<p:option name="parameters" select="map{}" as="map(xs:QName,item()*)?" />
+	
+	<p:documentation>
+		<m:desc>A path to the root of the XSpec project (optional).</m:desc>
+	</p:documentation>
+	<p:option name="xspec-home" as="xs:anyURI?" static="true" />
+	
+	<p:documentation>
+		<m:desc>A path to the XSLT stylesheet to use to compile the test file (optional).</m:desc>
+	</p:documentation>
+	<p:option name="compiler-uri" as="xs:anyURI?" static="true" />
+	
+	<p:documentation>
+		<m:desc>Configuration options to pass through to the compiler stylesheet (optional).</m:desc>
+	</p:documentation>
+	<p:option name="compiler-options" as="map(xs:QName, item()*)?" static="true" />
+	
+	<p:documentation>
+		<m:desc>A path to the XSLT stylesheet to use to format the test results (optional).</m:desc>
+	</p:documentation>
+	<p:option name="formatter-uri" as="xs:anyURI?" static="true" />
+	
+	<p:documentation>
+		<m:desc>Configuration options to pass through to the formatter stylesheet (optional).</m:desc>
+	</p:documentation>
+	<p:option name="formatter-options" as="map(xs:QName, item()*)?" static="true" />
+	
+	<p:documentation>
+		<m:desc>Serialization options for the formatted report (optional).</m:desc>
+	</p:documentation>
+	<p:option name="serialization-options" select="map{ 
+			xs:QName('indent') : true(), 
+			xs:QName('method') : 'xhtml', 
+			xs:QName('encoding') : 'UTF-8', 
+			xs:QName('include-content-type') : true(), 
+			xs:QName('omit-xml-declaration') : false()
+		}" as="map(xs:QName, item()*)?" static="true" />
+	
+	<p:documentation>
+		<m:desc>If you want to store a copy of the compiled XSpec, for example to aid with 
+			debugging, then you can use this option to specify where to save it (optional).</m:desc>
+		<m:note>If this option is empty then this step will NOT save a copy of the compiled 
+			XSpec result to the file-system.</m:note>
+		<m:note>If the process completes, the compiled XSpec will always be output via the result port.</m:note>
+	</p:documentation>
+	<p:option name="log-compiled" as="xs:anyURI?" static="true" />
+	
+	
+	<p:option name="log-indented" as="xs:anyURI?" static="true" />
+	
+	<p:documentation>
+		<m:desc>If you want to store a copy of the XML report (before the formatted report
+			is generated), then you can use this option to specify where to save it (optional).</m:desc>
+		<m:note>If this option is empty then this step will NOT save a copy of the unformatted 
+			XSpec results to the file-system.</m:note>
+		<m:note>The unformatted XML report will always be output via the xml-report port.</m:note>
+	</p:documentation>
+	<p:option name="log-xml-report" as="xs:anyURI?" static="true" />
+	
+	<p:documentation>
+		<m:desc>If you want to store a copy of the formatted report, for example to aid with 
+			debugging, then you can use this option to specify where to save it (optional).</m:desc>
+		<m:note>If this option is empty then this step will NOT save a copy of the formatted report
+			to the file-system.</m:note>
+		<m:note>If the process completes, the formatted report will always be output via the result port.</m:note>
+	</p:documentation>
+	<p:option name="log-report" as="xs:anyURI?" static="true" />
 	
 	
 	<p:documentation>
 		<m:component>Convert the iXSpec test file to a standard XSpec test file for XSLT.</m:component>
 	</p:documentation>
 	<ixp:ixspec2xspec name="convert-to-xspec" />
-	
+		
 	
 	<p:documentation>
 		<m:component>Run the XSpec file using the standard/official XSLT process.</m:component>
 	</p:documentation>
-	<x:xslt-harness name="run-xspec">
-		<p:with-option name="parameters" select="$parameters" />
-	</x:xslt-harness>
+	<x:xslt-harness name="run-xspec" />
 		
-
 </p:declare-step>

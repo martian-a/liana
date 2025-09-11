@@ -70,7 +70,8 @@
 			<m:note>If <m:code>parameters</m:code> isn't set to an empty map by default then an error is thrown by <m:code>x:compile-xslt</m:code> in <m:code>harness-lib.xpl</m:code> when map:get() is used (because <m:code>map:get()</m:code> requires a map).</m:note>
 		</m:component>
 	</p:documentation>	
-	<p:option name="parameters" select="map{}" as="map(xs:QName,item()*)" />
+	<p:option name="log-ixml" as="xs:anyURI?" static="true" />
+	<p:option name="log-preprocessed" as="xs:anyURI?" static="true" />
 	
 	<p:option name="tmp-dir" select="'../tmp/'" as="xs:anyURI" />
 	
@@ -84,29 +85,9 @@
 	<p:variable name="test-file-base-uri" select="document-uri(/)" as="xs:anyURI" />
 	<p:variable name="test-file-name" select="tokenize($test-file-base-uri, '/')[last()] ! string-join(tokenize(., '\.')[position() != last()], '.')" as="xs:string" />
 
-	<p:variable name="dynamic-parameters" select="$parameters" as="map(xs:QName,item()*)" />
-	<p:variable name="dynamic-parameters" select="if ($debug and map:get($parameters, 'log-ixspec' = '')) then (
-			map:put($dynamic-parameters, 'log-ixspec', concat($debug-base-path, '/', $test-file-name, '.ixspec')),
-			map:put($dynamic-parameters, 'log-ixspec-pre-new-contexts', concat($debug-base-path, '/', $test-file-name, '.pre_new_contexts.xml')),
-			map:put($dynamic-parameters, 'log-ixspec-new-contexts', concat($debug-base-path, '/', $test-file-name, '.new_contexts.xml'))
-		) else $parameters" as="map(xs:QName,item()*)" />
-	<p:variable name="dynamic-parameters" select="if ($debug and map:get($parameters, 'log-xspec' = '')) then (
-			map:put($dynamic-parameters, 'log-xspec', concat($debug-base-path, '/', $test-file-name, '.xspec'))
-		) else $dynamic-parameters" />
 
-
-	<x:log if-set="log-ixspec">
-		<p:with-option name="parameters" select="$dynamic-parameters"/>         
-	</x:log>
-
-	
 	<p:namespace-rename from="http://xylarium.org/ns/xml/ixspec" to="http://www.jenitennison.com/xslt/xspec" />
 	<p:add-attribute match="/*" attribute-name="stylesheet" attribute-value="http://xylarium.org/ns/xslt/utils/identity.xsl" />
-	
-	<x:log if-set="log-ixspec-pre-new-contexts">
-		<p:with-option name="parameters" select="$dynamic-parameters"/>         
-	</x:log>
-
 
 	<p:viewport name="update-context-href"
 		match="/x:description/descendant-or-self::x:scenario[x:context/@href][not(@pending)]">
@@ -150,9 +131,13 @@
 		
 	</p:viewport>
 	
-	<x:log if-set="log-ixspec-new-contexts">
-		<p:with-option name="parameters" select="$dynamic-parameters"/>         
-	</x:log>
+	
+	<p:documentation>
+		<m:desc>Store a copy of the partially pre-processed iXSpec file if a location to store it at has been supplied.</m:desc>
+	</p:documentation>
+	<p:store use-when="normalize-space($log-ixml) != ''" message="[debug] Saving partially pre-processed iXSpec to {$log-ixml}">
+		<p:with-option name="href" select="$log-ixml" />         
+	</p:store>
 	
 	
 	<p:viewport name="update-expect-href"
@@ -175,9 +160,13 @@
 	
 	<p:delete match="/*/@ixml-grammar" name="delete-grammar-ref" />
 	
-	<x:log if-set="log-xspec">
-		<p:with-option name="parameters" select="$dynamic-parameters"/>         
-	</x:log>
+	
+	<p:documentation>
+		<m:desc>Store a copy of the pre-processed iXSpec file if a location to store it at has been supplied.</m:desc>
+	</p:documentation>
+	<p:store use-when="normalize-space($log-preprocessed) != ''" message="[debug] Saving pre-processed iXSpec to {$log-preprocessed}">
+		<p:with-option name="href" select="$log-preprocessed" />         
+	</p:store>
                    
     <p:sink />   
 	
