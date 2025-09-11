@@ -32,16 +32,30 @@ Once the extra [dependencies](#dependencies) are in place, you will need to crea
 1. Save a copy of `local.properties.example` as `local.properties` (in the same directory as `local.properties.example`)
 1. Set `liana.xproc-processor` to either `morgana` or `calabash`, depending on which of those two supported XProc processors you intend to use
 1. Change the values of the properties that are prefixed with `liana.lib.` so that the paths point to wherever you've installed these resources in your local environment.  You may also need to change some version numbers (in the properties file).
+1. Optionally, you may also wish to change some of the following properties:
+    * `liana.lib.catalogs.default` - _path to the project's default XML Catalog_
+    * `liana.tmp-dir` - _path to the directory where temporary files will be created._ Default value: `ixspec-test-runner/utils/tmp`
+    * `liana.tmp-dir.clean` - _set to `true` if you want `liana.tmp-dir` to be **deleted every time the ANT wrapper is run**_
+    * `liana.output-dir` - _path to the directory where test result files will be saved._ Default value: `ixspec-test-runner/results`
+    * `liana.output-dir.clean` - _set to `true` if you want `liana.output-dir` to be **deleted every time the ANT wrapper is run**_
+    * `liana.debug` - _set to `true` if you would like the intermediary files to be stored in `liana.tmp-dir`_
+    * `liana.xproc-processor` - _switch for controlling which of the supported XProc processors to use_ Valid values are: `calabash` or `morgana` (default)
+ 	* `liana.ixspec` - _path to the iXSpec test file to evaluate_
+
 
 #### Optional extra configuration
 
-Some additonal properties are set in the project.properties file:
+Some additonal properties are set in the `project.properties` file:
 * `liana.home` - _path to the root of this project_
 * `liana.lib.xproc-processor.morgana.config` - _path to a Morgana configuration file_ 
 * `liana.lib.xproc-processor.calabash.config` - _path to a Calabash configuration file_
-* `liana.lib.catalogs.default` - _path to the project's default XML Catalog_
-* `liana.tmp-dir` - _path to the directory where temporary files will be created._ Default value: `ixspec-test-runner/utils/tmp` **This directory is deleted everytime the ANT wrapper is run**
-* `liana.output-dir` - _path to the directory where test result files will be saved._ Default value: `ixspec-test-runner/results` **This directory is deleted everytime the ANT wrapper is run**
+
+If you want to change any of the above properties:
+1. Copy the relevant line from `project.properties`
+1. Paste it into `local.properties`
+1. Change the value of that setting in `local.properties`
+
+This will avoid your changes from being overwritten (or causing a conflict) the next time you update this repo to a newer version. 
 
 ##### XProc processor config files
 
