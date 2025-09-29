@@ -27,7 +27,7 @@ java -cp path/to/MorganaXProc-IIIse.jar:path/to/MorganaXProc-IIIse_lib/*:path/to
 	-config=src/configs/morgana/default.xml /
 	src/xproc/ixspec.xpl -cp / 
 	-catalogs=catalog.xml /
-	-input:source=test/ixml/dtd_declaration.ixspec / 
+	-input:source=test/cases/external_contexts.ixspec / 
 	-output:result=results/dtd_declaration.html
 ```
 
@@ -36,13 +36,13 @@ _Calabash:_
 java -cp path/to/xmlcalabash-3/lib/*:path/to/xmlcalabash-3/xmlcalabash.jar /
 	com.xmlcalabash.app.Main / 
 	--configuration:src/configs/morgana/default.xml /
-	--input:text/plain@source=test/ixml/dtd_declaration.ixspec / 
+	--input:text/plain@source=test/cases/external_contexts.ixspec / 
 	--output:result=results/dtd_declaration.html /
 	--catalog:catalog.xml /
 	src/xproc/ixspec.xpl
 	
 ```
-If you use the example file (`test/ixml/dtd_declaration.ixspec`), it's expected that **two tests will FAIL** but all the others will pass. 
+If you use the example file (`test/cases/balisage_challenge_2025.ixspec`), it's expected that **two tests will FAIL** but all the others will pass. 
 
 ### Notes
 
@@ -55,7 +55,7 @@ If you're using Morgana:
 
 ## Create an iXSpec test file <a id="how-to-write"></a>
 
-For an example of an iXSpec test file, see `test/ixml/dtd_declaration.ixspec`.
+For an example of an iXSpec test file, see `test/cases/external_contexts.ixspec`.
 
 When writing your own, you need to be aware of 3 main differences to writing an XSpec for XSLT test file:
 * use @ixml-grammar instead of @stylesheet

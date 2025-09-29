@@ -25,7 +25,7 @@
 				<m:original-author>Sheila Thomson</m:original-author>
 			</m:contributors>
 			<m:history created="2025-08-11">
-				<m:change date="2025-09-04">
+				<m:change date="2025-09-29">
 					<m:desc>Updated to reflect changes to XProc 3 in XSpec project.</m:desc>
 					<m:related href="https://github.com/xspec/xspec/pull/2163">Pull request to move/rename XProc 3 harnesses</m:related>
 				</m:change>
@@ -64,7 +64,7 @@
 			<m:note date="2025-08-13">Not yet supported by the official XProc 3.0 library for XSpec.</m:note>
 		</m:component>
 	</p:documentation>	
-	<p:output port="result-xml" sequence="true" pipe="result-xml@run-xspec" /-->
+	<p:output port="result-xml" sequence="true" pipe="result-xml@run-xspec-for-xslt" /-->
 	
 	
 	<p:documentation>
@@ -166,6 +166,6 @@
 	<p:documentation>
 		<m:component>Run the XSpec file using the standard/official XSLT process.</m:component>
 	</p:documentation>
-	<x:xslt-harness name="run-xspec" />
+	<x:run-xslt name="run-xspec-for-xslt" />
 		
 </p:declare-step>

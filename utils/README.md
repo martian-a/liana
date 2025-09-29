@@ -20,10 +20,10 @@ The only utility currently available is an ANT wrapper for running an iXSpec tes
 Once everything is [set-up](#set-up), you can run an iXSpec test file from the command-line, for example:
 
 ```
-ant -Dliana.ixspec=test/ixml/dtd_declaration.ixspec
+ant -Dliana.ixspec=../test/cases/external_contexts.ixspec
 ```
 
-NB. If you run the example test file (`test/ixml/dtd_declaration.ixspec`), it's expected that **two tests will FAIL** but all the others will pass. 
+NB. If you run the example test file (`test/cases/balisage_challenge_2025.ixspec`), it's expected that **two tests will FAIL** but all the others will pass. 
 
 ### Set-up <a id="set-up"></a>
 
