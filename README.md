@@ -1,6 +1,6 @@
 # iXSpec Test Runner
 
-Status: Version 1.1.0-alpha released (2025-09-05)
+Status: Version 1.2.0-alpha released (2025-09-29)
 
 An (unofficial) extension to XSpec, for writing and running tests for Invisible XML (iXML).
 
@@ -26,7 +26,7 @@ java -cp path/to/MorganaXProc-IIIse.jar:path/to/MorganaXProc-IIIse_lib/*:path/to
 	com.xml_project.morganaxproc3.XProcEngine /
 	-config=src/configs/morgana/default.xml /
 	src/xproc/ixspec.xpl -cp / 
-	-catalogs=catalog.xml /
+	-catalogs=local.catalog.xml /
 	-input:source=test/cases/external_contexts.ixspec / 
 	-output:result=results/dtd_declaration.html
 ```
@@ -38,7 +38,7 @@ java -cp path/to/xmlcalabash-3/lib/*:path/to/xmlcalabash-3/xmlcalabash.jar /
 	--configuration:src/configs/morgana/default.xml /
 	--input:text/plain@source=test/cases/external_contexts.ixspec / 
 	--output:result=results/dtd_declaration.html /
-	--catalog:catalog.xml /
+	--catalog:local.catalog.xml /
 	src/xproc/ixspec.xpl
 	
 ```
@@ -97,12 +97,24 @@ Other than the differences detailed above, an iXSpec test is written the same wa
 
 ## Set-up <a id="set-up"></a>
 
-1. Clone this repository and its submodules: `git clone --recurse-submodules -j8 <repo-url>`
+1. Clone this repository: `git clone <repo-url>`
 1. Install any missing [dependencies](#dependencies)
+1. Create a local XML Catalog
+
+### Creating a local XML Catalog
+
+1. Create a copy of `local.catalog.example.xml` named `local.catalog.xml`
+1. Edit `local.catalog.xml`:
+	1. Change the value of the `catalog` attribute on line 9 so that it's a path to the `catalog.xml` file in the root of your local instance of XSpec, eg. `/home/harringonh/git/xspec/catalog.xml`
+	1. __Optional__: If you have a local instance of [Myrtle](https://github.com/Xylarium/myrtle), change the value of the catalog attribute on line 16 to the `catalog.xml` file in the root of your local instance of Myrtle, eg. `/home/harringtog/git/myrtle/catalog.xml` 	
+1. Save your changes to `local.catalog.xml`
+
+See the [How to use](#how-to-use) section (above), for examples of how `local.catalog.xml` should be referenced when you run iXSpec.
+
 
 ## Dependencies <a id="dependencies"></a>
 
-* XSpec (included in this repo as a git submodule)
+* XSpec ([https://github.com/xspec/xspec]())
 * An XProc processor:
 	* MorganaXProc III 
 	* XML Calabash 3

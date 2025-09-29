@@ -12,7 +12,8 @@ output/
 results/
 
 # Local settings
-local.*.xml
+local.*
 
 # Documentation
+!local.*.example
 !local.*.example.xml
